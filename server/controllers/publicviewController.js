@@ -1,5 +1,5 @@
 
-
+// I am yash
 
 
 export const getCourses = async (req, res) => {
