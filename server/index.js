@@ -1,20 +1,15 @@
 import express from 'express';
 import { connectDB } from './configs/dbConfig.js';
+import userRoutes from './controllers/userController.js'
 
 const app = express();
+app.use(express.json());
 
-app.get("/",(request,response)=>{
-    response.send({message:"I am yash"});
-})
+app.get("/", (req, res) => {
+    res.send({ message: "Yoga Center API is running..." });
+});
 
-
-
-
-
-
-
-
-
+app.use("/users", userRoutes);
 
 
 
