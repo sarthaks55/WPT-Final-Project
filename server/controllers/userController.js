@@ -1,10 +1,8 @@
 import express from 'express';
 import { getConnectionObject} from '../configs/dbConfig.js';
 
-const router = express.Router();
-
 //GET all users
-router.get("/", async (req, res) => {
+export async function getAllUsers (req, res){
     try {
         const conn=getConnectionObject();
         const [rows] = await conn.query("SELECT * FROM users");
@@ -12,10 +10,10 @@ router.get("/", async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: "Error fetching users", error });
     }
-});
+};
 
 //GET user by ID
-router.get("/:id", async (req, res) => {
+export async function getUserById(req, res) {
     try {
         const conn=getConnectionObject();
         const [rows] = await conn.query("SELECT * FROM users WHERE id = ?", [req.params.id]);
@@ -27,26 +25,35 @@ router.get("/:id", async (req, res) => {
     } catch (error) {
         res.status(500).send({ message: "Error fetching user", error });
     }
-});
+};
 
 //CREATE a new user
-router.post("/adduser", async (req, res) => {
+export async function addUser(request, response) {
     try {
-        const conn=getConnectionObject();
-        const { role_id, full_name, email, password_hash, phone } = req.body;
-        const [result] = await conn.query(
-            "INSERT INTO users (role_id, full_name, email, password_hash, phone) VALUES (?, ?, ?, ?, ?)",
-            [role_id, full_name, email, password_hash, phone]
-        );
-        res.status(201).send({ message: "User created successfully", userId: result.insertId });
+        const connection = getConnectionObject();
+        const { role_id, full_name, email, password_hash, phone } = request.body;
+
+        const qry = `
+            INSERT INTO users (role_id, full_name, email, password_hash, phone)
+            VALUES (${role_id}, '${full_name}', '${email}', '${password_hash}', '${phone}')
+        `;
+
+        const [resultSet] = await connection.query(qry);
+
+        if (resultSet.affectedRows === 1) {
+            response.status(201).send({ message: 'User Added Successfully' });
+        } else {
+            response.status(500).send({ message: 'Unable to Add User' });
+        }
     } catch (error) {
-        res.status(500).send({ message: "Error creating user", error });
         console.log(error);
+        response.status(500).send({ message: 'Something went wrong' });
     }
-});
+}
+
 
 //UPDATE a user
-router.put("/:id", async (req, res) => {
+export async function updateUserById (req, res){
     try {
     const conn = getConnectionObject();
     const { role_id, full_name, email, password_hash, phone } = req.body;
@@ -69,10 +76,10 @@ router.put("/:id", async (req, res) => {
     console.log(error);
     res.status(500).send({ message: "Something went wrong" });
   }
-});
+};
 
 //DELETE a user
-router.delete("/:id", async (req, res) => {
+export async function deleteUserById(req, res){
     try {
         const conn=getConnectionObject();
         const [result] = await conn.query("DELETE FROM users WHERE id = ?", [req.params.id]);
@@ -84,6 +91,6 @@ router.delete("/:id", async (req, res) => {
     } catch (error) {
         res.status(500).send({ message: "Error deleting user", error });
     }
-});
+};
 
-export default router;
+
