@@ -2,13 +2,14 @@ import express from 'express';
 import { connectDB } from './configs/dbConfig.js';
 import { getCourseById, getCourses } from './controllers/publicviewController.js';
 import { loginUser, registerUser } from './controllers/authController.js';
+import { getAllUsers, getUserById, addUser, updateUserById, deleteUserById} from "./controllers/userController.js";
 
 const app = express();
 app.use(express.json());
 
-app.get("/",(request,response)=>{
-    response.send({message:"I am yash"});
-})
+app.get("/", (req, res) => {
+    res.send({ message: "Yoga Center API is running..." });
+});
 
 app.get("/courses",getCourses);
 
@@ -23,6 +24,12 @@ app.get("/login",loginUser);
 
 
 
+
+app.get("/users",getAllUsers);
+app.get("/users/:id",getUserById);
+app.post("/users",addUser);
+app.put("/users/:id",updateUserById);
+app.delete("/users/:id",deleteUserById);
 
 
 
