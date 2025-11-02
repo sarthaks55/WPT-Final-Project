@@ -2,10 +2,12 @@ import express from 'express';
 import { connectDB } from './configs/dbConfig.js';
 import { getCourseById, getCourses } from './controllers/publicviewController.js';
 import { loginUser, registerUser } from './controllers/authController.js';
+import cors from 'cors';
 import { getAllUsers, getUserById, addUser, updateUserById, deleteUserById} from "./controllers/userController.js";
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send({ message: "Yoga Center API is running..." });
@@ -35,6 +37,6 @@ app.delete("/users/:id",deleteUserById);
 
 
 
-app.listen(4500,()=>{
+app.listen(5000,()=>{
     connectDB();
 });
