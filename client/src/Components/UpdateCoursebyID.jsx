@@ -15,9 +15,10 @@ export function UpdateCourseForm() {
     
     const fetchCourseById = async () => {
         try {
-            const response = await getCourseById(id);
+            const response = await getCourseByID(id);
+            console.log(response.data[0])
             if (response.status === 200) {
-                setFormData(response.data);
+                setFormData(response.data[0])
             }
         } catch (error) {
             console.log(error)
@@ -85,7 +86,7 @@ export function UpdateCourseForm() {
 
                         <Form.Group className="mb-3">
                             <Form.Label>Difficulty</Form.Label>
-                            <Form.Control type="number" placeholder="Enter quantity" name="quantity" onChange={handleChange} value={formData.difficulty}/>
+                            <Form.Control type="text" placeholder="Enter quantity" name="quantity" onChange={handleChange} value={formData.difficulty}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3">
