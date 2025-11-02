@@ -3,6 +3,8 @@ import { Navigationbar } from "./Components/NavigationBar";
 import { Dashboard } from "./Components/Dashboard";
 import { ToastContainer } from "react-toastify";
 import { CoursesList } from "./Components/CoursesList";
+import { AddCourses } from "./Components/AddCourses";
+import { UpdateCourseForm } from "./Components/UpdateCoursebyID";
 
 
 function App() {
@@ -12,7 +14,9 @@ function App() {
       <Navigationbar/>
       <Routes>
         <Route path="/" element={<Dashboard/>} />
-        <Route path="/courses-list" element={<CoursesList/>} />
+        <Route path="/add-courses" element={<AddCourses/>}/>
+        <Route path="/courses" element={<CoursesList/>} />
+        <Route path="/courses/:id" element={<UpdateCourseForm/>} />
       </Routes>
       <ToastContainer/>
     </BrowserRouter>

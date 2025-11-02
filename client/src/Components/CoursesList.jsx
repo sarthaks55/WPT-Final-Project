@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Alert, Button, Col, Container, Modal, Row, Table } from "react-bootstrap";
-import { deleteProduct, getAllProducts } from "../services/CourseServices";
+import { deleteCourse, getAllCourses } from "../services/CourseServices";
 import '../assets/css/productlist.css';
 import { Bounce, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -33,7 +33,7 @@ export function CoursesList() {
 
 
     const showSuccessToast = () => {
-        toast.success("Product deleted", {
+        toast.success("course deleted", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -47,7 +47,7 @@ export function CoursesList() {
     }
 
     const showErrorToast = () => {
-        toast.error("Product deletion failed", {
+        toast.error("course deletion failed", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -63,10 +63,10 @@ export function CoursesList() {
     const handleCourseDelete = async () => {
         try {
             if (selectedCourse) {
-                const response = await deleteProduct(selectedCourse.id);
+                const response = await deleteCourse(selectedCourse.id);
                 if (response.status === 200) {
                     showSuccessToast();
-                    const remainingProducts = courses.filter((p) => {
+                    const remainingCourses = courses.filter((p) => {
                         return p.id !== selectedCourse.id
                     });
                     setCourses(remainingCourses);
@@ -93,10 +93,10 @@ export function CoursesList() {
             {
                 courses.length === 0 ? <Alert variant="warning">No Courses found</Alert> : <Table className="mt-3">
                     <thead>
-                        <tr>
+                        <tr >
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Description (₹)</th>
+                            <th>Description</th>
                             <th>Difficulty</th>
                             <th>Duration_weeks</th>
                             <th>Price</th>
@@ -104,15 +104,15 @@ export function CoursesList() {
                     </thead>
                     <tbody>
                         {
-                            products.map((courses, index) => {
+                            courses.map((course, index) => {
                                 return (
-                                    <tr>
-                                        <td>{courses.id}</td>
-                                        <td>{courses.name}</td>
-                                        <td>{courses.description}</td>
-                                        <td>{courses.difficulty}</td>
-                                        <td>{courses.duration_weeks}</td>
-                                        <td>{courses.price}</td>
+                                    <tr key={index}>
+                                        <td>{course.id}</td>
+                                        <td>{course.name}</td>
+                                        <td>{course.description}</td>
+                                        <td>{course.difficulty}</td>
+                                        <td>{course.duration_weeks}</td>
+                                        <td>{course.price}</td>
                                         <td>
                                             <Button variant="danger" size="sm" className="action-button" onClick={() => {
                                                 setShowConfirmation(true);
@@ -123,7 +123,7 @@ export function CoursesList() {
                                                 size="sm"
                                                 className="action-button"
                                                 onClick={() => {
-                                                   
+                                                   navigate(`/courses/${course.id}`);
                                                 }}>Edit</Button>
                                         </td>
                                     </tr>

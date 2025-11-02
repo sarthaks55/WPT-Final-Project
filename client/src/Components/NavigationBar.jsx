@@ -13,11 +13,11 @@ export function Navigationbar() {
                             <Nav.Link>Dashboard</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to="">
+                        <LinkContainer to="/add-courses">
                             <Nav.Link>Add Courses</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to="">
+                        <LinkContainer to="/courses">
                             <Nav.Link>Courses List</Nav.Link>
                         </LinkContainer>
 

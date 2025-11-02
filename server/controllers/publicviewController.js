@@ -12,7 +12,7 @@ export async function getCourses(req,res){
     }
 }
 
-// I am yash
+
 
 
 export async function getCourseById (req,res){
