@@ -3,6 +3,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { removeToken } from "../services/TokenService";
 
+
 export function Navigationbar() {
 
     const navigate = useNavigate();
@@ -29,6 +30,10 @@ export function Navigationbar() {
 
                         <LinkContainer to="/courses">
                             <Nav.Link>Courses List</Nav.Link>
+                        </LinkContainer>
+
+                        <LinkContainer to="/contactus">
+                            <Nav.Link>Contact Us</Nav.Link>
                         </LinkContainer>
 
                     </Nav>

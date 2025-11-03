@@ -5,28 +5,22 @@ import { ToastContainer } from "react-toastify";
 import { CoursesList } from "./Components/CoursesList";
 import { AddCourses } from "./Components/AddCourses";
 import { UpdateCourseForm } from "./Components/UpdateCoursebyID";
-import { Login } from "./Components/Login";
-import { PrivateRoute } from "./Components/PrivateRoute";
-
+import ContactPage from "./Components/ContactUs";
 
 function App() {
 
-  const location = useLocation();
-
   return (
-    <div>
-      {location.pathname !== "/" ? <Navigationbar /> : null}
-=      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route element={<PrivateRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/add-courses" element={<AddCourses/>}/>
-          <Route path="/courses" element={<CoursesList/>} />
-          <Route path="/courses/:id" element={<UpdateCourseForm/>} />
-        </Route>
+    <BrowserRouter>
+      <Navigationbar/>
+      <Routes>
+        <Route path="/" element={<Dashboard/>} />
+        <Route path="/add-courses" element={<AddCourses/>}/>
+        <Route path="/courses" element={<CoursesList/>} />
+        <Route path="/courses/:id" element={<UpdateCourseForm/>} />
+        <Route path="/contactus" element={<ContactPage/>} />
       </Routes>
       <ToastContainer/>
-    </div>
+    </BrowserRouter>
   )
 }
 
