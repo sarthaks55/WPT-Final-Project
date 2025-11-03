@@ -15,7 +15,7 @@ export function UpdateCourseForm() {
     
     const fetchCourseById = async () => {
         try {
-            const response = await getCourseById(id);
+            const response = await getCourseByID(id);
             if (response.status === 200) {
                 setFormData(response.data);
             }
