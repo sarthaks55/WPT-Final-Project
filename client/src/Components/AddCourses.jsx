@@ -76,12 +76,12 @@ export function AddCourses() {
 
                         <Form.Group className="mb-3">
                             <Form.Label>Difficulty</Form.Label>
-                            <Form.Control type="number" placeholder="Enter quantity" name="quantity" onChange={handleChange} />
+                            <Form.Control type="text" placeholder="Enter Difficulty" name="difficulty" onChange={handleChange} />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
                             <Form.Label>Duration_weeks</Form.Label>
-                            <Form.Control type="number" placeholder="Enter quantity" name="quantity" onChange={handleChange} />
+                            <Form.Control type="number" placeholder="Enter Duration" name="duration_weeks" onChange={handleChange} />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
