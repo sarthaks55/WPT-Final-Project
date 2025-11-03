@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { adminLogin } from "../services/AdminService";
-import { useNavigate } from "react-router-dom";
+import { login } from "../services/AuthService";
+import { Link, useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 import { getToken, storeToken } from "../services/TokenService";
 
@@ -26,7 +26,7 @@ export function Login() {
         try {
             event.preventDefault();
             console.log(formData);
-            const response = await adminLogin(formData);
+            const response = await login(formData);
             console.log(response);
             if(response.status === 200){
                 storeToken(response.data.token);
@@ -71,6 +71,9 @@ export function Login() {
                         <Button variant="primary" type="submit">
                             Login
                         </Button>
+                        <Link to="/register">
+                            <span>Register</span>
+                        </Link>
                     </Form>
                 </Col>
             </Row>

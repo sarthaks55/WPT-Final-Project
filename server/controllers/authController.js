@@ -29,23 +29,34 @@ export async function loginUser(req, res) {
   try {
     const conn = getConnectionObject();
     const { email, password_hash } = req.body;
-    const qry = `SELECT * FROM users WHERE email ='${email}'`;
-    const [rows] = await conn.query(qry);
+
+    // ⚠️ Use parameterized query to prevent SQL injection
+    const qry = `SELECT * FROM users WHERE email = ?`;
+    const [rows] = await conn.query(qry, [email]);
+
     if (rows.length === 0) {
-      res.status(400).send("Failed");
+      return res.status(400).send({ message: "User not found" });
+    }
+
+    const user = rows[0];
+
+    // Compare password
+    if (compareSync(password_hash, user.password_hash)) {
+      // Create JWT token
+      const token = jwt.sign({ adminId: user.id }, "admin1234");
+
+      // ✅ Send role_id as part of response
+      res.status(200).send({
+        token,
+        message: "Login successful",
+        role_id: user.role_id,
+        name: user.full_name  // <-- Added this line
+      });
     } else {
-      if (compareSync(password_hash, rows[0].password_hash)) {
-        const token = jwt.sign({ adminId: rows[0].id }, "admin1234");
-        res.status(200).send({ token, message: "Login successful" });
-      } else {
-        res
-          .status(400)
-          .send({ message: "Login failed, password is invalid" });
-      }
-      // compare the password
+      res.status(400).send({ message: "Login failed, password is invalid" });
     }
   } catch (error) {
-    console.log(error);
-    res.status(500).send({ message: "Error " });
+    console.error(error);
+    res.status(500).send({ message: "Error" });
   }
 }

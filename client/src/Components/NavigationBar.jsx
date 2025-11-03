@@ -36,8 +36,27 @@ export function Navigationbar() {
                             <Nav.Link>Contact Us</Nav.Link>
                         </LinkContainer>
 
+                        <LinkContainer to="/aboutus">
+                            <Nav.Link>About Us</Nav.Link>
+                        </LinkContainer>
+
+                        <LinkContainer to="/userdashboard">
+                            <Nav.Link>UserDashboard</Nav.Link>
+                        </LinkContainer>
+
+                        <LinkContainer to="/add-user">
+                            <Nav.Link>Add User</Nav.Link>
+                        </LinkContainer>
+
+                        <LinkContainer to="/user-list">
+                            <Nav.Link>User List</Nav.Link>
+                        </LinkContainer>
+
+                        
+
                     </Nav>
                 </Navbar.Collapse>
+                
                 <Button variant="success" onClick={handleLogout}>Logout</Button>
             </Container>
         </Navbar>

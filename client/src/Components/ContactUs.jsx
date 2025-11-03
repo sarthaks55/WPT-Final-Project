@@ -10,7 +10,7 @@ import { Bounce, toast } from "react-toastify";
 function ContactPage() {
 
 
-  const [formData, setFormData] = useState({ fullName: '', email: '', phone: '', message: ''});
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: ''});
 
   const handleChange = (event) => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -83,7 +83,7 @@ function ContactPage() {
             <Card className="shadow p-3 mb-5 contact-form">
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" >
-                  <Form.Control type="text" placeholder="Full Name"  name="fullName" onChange={handleChange}/>
+                  <Form.Control type="text" placeholder="Full Name"  name="name" onChange={handleChange}/>
                 </Form.Group>
                 <Form.Group className="mb-3" >
                   <Form.Control type="email" placeholder="Email Id" name="email" onChange={handleChange} />
