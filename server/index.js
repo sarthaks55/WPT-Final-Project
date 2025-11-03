@@ -1,10 +1,11 @@
 import express from 'express';
 import { connectDB } from './configs/dbConfig.js';
-import { getCourseById, getCourses } from './controllers/publicviewController.js';
+import { getCourseById, getCourses, postContactUs } from './controllers/publicviewController.js';
 import { loginUser, registerUser } from './controllers/authController.js';
 import cors from 'cors';
 import { getAllUsers, getUserById, addUser, updateUserById, deleteUserById} from "./controllers/userController.js";
 import { addCourse, deleteCourseById, updateCourse } from './controllers/courseController.js';
+import { verifyToken } from './middlewares/VerifyToken.js';
 
 const app = express();
 app.use(express.json());
@@ -15,12 +16,12 @@ app.get("/", (req, res) => {
 });
 
 app.get("/courses",getCourses);
-
 app.get("/courses/:id",getCourseById);
+app.post("/contactus",postContactUs);
 
 app.post("/signup",registerUser);
 
-app.get("/login",loginUser);
+app.post("/login",loginUser);
 
 
 
