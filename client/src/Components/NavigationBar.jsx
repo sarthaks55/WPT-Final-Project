@@ -1,6 +1,7 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
+
 export function Navigationbar() {
     return (
         <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
@@ -19,6 +20,10 @@ export function Navigationbar() {
 
                         <LinkContainer to="/courses">
                             <Nav.Link>Courses List</Nav.Link>
+                        </LinkContainer>
+
+                        <LinkContainer to="/contactus">
+                            <Nav.Link>Contact Us</Nav.Link>
                         </LinkContainer>
 
                     </Nav>
