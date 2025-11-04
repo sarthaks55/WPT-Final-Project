@@ -1,0 +1,88 @@
+:root{
+  --bg-start: #2b2b2b; 
+  --bg-end:   #5a2f27;  
+  --accent:   #f6a85b;  
+  --muted:    #cfcfcf;
+  --logo-color: #d7644d;
+  --glass:    rgba(255,255,255,0.06);
+}
+
+
+.app-navbar{
+  background: transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(10,10,10,0.45);
+  padding: 0.6rem 1rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+
+
+
+
+.lotus-logo{
+    width: 80px;
+    height: auto;
+}
+
+
+
+.navbar-toggle{ 
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: none;
+  
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+} 
+
+
+.nav-links{
+  align-items: center;
+}
+
+
+.nav-link-custom{
+  color: var(--logo-color) !important;
+  margin-left: 0.35rem;
+  margin-right: 0.35rem;
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: transform 0.14s ease, background-color 0.14s ease, color 0.14s ease;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+
+.nav-link-custom:hover{
+  background: rgba(255, 255, 255, 0.018);
+  color: #fff !important;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 18px rgba(40,30,30,0.18);
+}
+
+
+.nav-link-custom.active,
+.nav-link-custom:active,
+.nav-link-custom[aria-current="page"]{
+    color: #fae2e2 !important;
+  border-radius: 5px ;
+  border-style: solid;
+  border-color: var(--logo-color);
+  border-width: 2px;
+  transform: translateY(-1px);
+}
+
+.Button-color{
+    background-color: var(--logo-color) !important;
+    border-color: var(--muted) !important;
+}
+.Button-color:hover{
+    background-color: transparent !important ;
+    border-color: var(--logo-color) !important;
+    color: #ffffff !important;
+    transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 18px rgba(40,30,30,0.18);
+}
+
+

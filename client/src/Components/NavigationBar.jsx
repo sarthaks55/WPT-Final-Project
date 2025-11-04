@@ -2,6 +2,8 @@ import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { removeToken } from "../services/TokenService";
+import "../assets/css/NavBar.css";
+import lotusLogo from "../assets/Images/lotus_logo_svg.svg";
 import { getUsername, removeRoleID, removeUserID, removeUsername } from "../services/RoleNameService";
 
 
@@ -18,55 +20,50 @@ export function Navigationbar() {
             navigate("/");
         }
 
+  
     return (
-        <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
+        <Navbar expand="lg" className="app-navbar" bg="dark" data-bs-theme="dark" sticky="top">
             <Container>
-                <Navbar.Brand href="#home">Yoga Center App</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <LinkContainer to="/">
-                            <Nav.Link>Dashboard</Nav.Link>
-                        </LinkContainer>
+                <Navbar.Brand className="nav-brand" href="/">
+                    <img src={lotusLogo} alt="Lotus Logo" className="lotus-logo " />
+                </Navbar.Brand>
 
-                        <LinkContainer to="/add-courses">
-                            <Nav.Link>Add Courses</Nav.Link>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-toggle" />
+                        
+
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto nav-links">
+                        <LinkContainer to="/">
+                            <Nav.Link className="nav-link-custom">Dashboard</Nav.Link>
+                        </LinkContainer>
+                         <LinkContainer to="/add-courses">
+                            <Nav.Link  className="nav-link-custom">Add Courses</Nav.Link>
                         </LinkContainer>
 
                         <LinkContainer to="/courses-list">
-                            <Nav.Link>Courses List</Nav.Link>
+                            <Nav.Link  className="nav-link-custom">Courses List</Nav.Link>
                         </LinkContainer>
 
                         <LinkContainer to="/contactus">
-                            <Nav.Link>Contact Us</Nav.Link>
+                            <Nav.Link  className="nav-link-custom">Contact Us</Nav.Link>
                         </LinkContainer>
-
-                        <LinkContainer to="/aboutus">
-                            <Nav.Link>About Us</Nav.Link>
-                        </LinkContainer>
-
                         <LinkContainer to="/userdashboard">
-                            <Nav.Link>UserDashboard</Nav.Link>
+                            <Nav.Link className="nav-link-custom">User Dashboard</Nav.Link>
                         </LinkContainer>
-
-                        <LinkContainer to="/add-user">
-                            <Nav.Link>Add User</Nav.Link>
+                        <LinkContainer to="/instructorDashboard">
+                            <Nav.Link className="nav-link-custom">Instructor Dashboard</Nav.Link>
                         </LinkContainer>
+                         <LinkContainer to="/courses">
+                    <Nav.Link className="nav-link-custom">{username}</Nav.Link>
+                </LinkContainer>
 
-                        <LinkContainer to="/user-list">
-                            <Nav.Link>User List</Nav.Link>
-                        </LinkContainer>
-
-                        
-
+                    
                     </Nav>
                 </Navbar.Collapse>
-                <LinkContainer to="/courses">
-                    <Nav.Link>{username}</Nav.Link>
-                </LinkContainer>
-                    
-                <Button variant="success" onClick={handleLogout}>Logout</Button>
+
+                 <Button className="Button-color" onClick={handleLogout}>Logout</Button>
             </Container>
         </Navbar>
-    )
+    );
 }
+
