@@ -1,4 +1,5 @@
 import express from 'express';
+import { compareSync, hashSync } from "bcrypt";
 import { getConnectionObject} from '../configs/dbConfig.js';
 
 //GET all users
@@ -56,12 +57,14 @@ export async function addUser(request, response) {
 export async function updateUserById (req, res){
     try {
     const conn = getConnectionObject();
+    
     const { role_id, full_name, email, password_hash, phone } = req.body;
+    const encryptedPassword = hashSync(password_hash, 12);
     const qry = `UPDATE users SET 
         role_id='${role_id}', 
         full_name='${full_name}', 
         email='${email}', 
-        password_hash='${password_hash}', 
+        password_hash='${encryptedPassword}', 
         phone='${phone}' 
       WHERE id=${req.params.id}
     `;
