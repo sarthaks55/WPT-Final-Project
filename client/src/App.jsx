@@ -16,7 +16,7 @@ import { Register } from "./Components/Register";
 import Dashboard from "./Components/Dashboard";
 import AccountDetails from "./Components/AccountDetails";
 import EditAccountDetails from "./Components/EditAccountDetails";
-
+import InstructorDashboard from "./Components/Instructor_Dashboard/InstructorDashboard"
 
 
 function App() {
@@ -37,6 +37,13 @@ function App() {
           <Route path="/add-courses" element={<AddCourses />} />
           <Route path="/courses" element={<CoursesList />} />
           <Route path="/courses/:id" element={<UpdateCourseForm />} />
+          <Route path="/instructorDashboard" element={<InstructorDashboard />}>
+            <Route index element={< AccountDetails />} />
+            <Route path="account" element={< AccountDetails />} />
+            <Route path="editDetails/:id" element={< EditAccountDetails />} />
+            <Route path="courses" element={<CoursesList />} />
+            <Route path="add-courses" element={<AddCourses />} />
+          </Route>
           <Route path="/userdashboard" element={<UDashboard />} >
             <Route index element={< AccountDetails />} />
             <Route path="account" element={< AccountDetails />} />

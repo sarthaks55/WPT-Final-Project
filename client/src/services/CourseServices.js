@@ -16,7 +16,7 @@ export function getCourseByID(id){
     return axios.get(`${COURSES_API_URL}/${id}`);
 }
 export function getCourseByUserId(id){
-    return axios.get(`${}/`);
+    return axios.get();
 }
 export function updateCourse(id, formData){
     return axios.put(`${COURSES_API_URL}/${id}`, formData);

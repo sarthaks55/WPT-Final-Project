@@ -87,7 +87,7 @@ export default function EditAccountDetails() {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Email Address</Form.Label>
-              <Form.Control type="email" placeholder="E-mail" onChange={handleChange} name="email" value={account.email} />
+              <Form.Control type="email" placeholder="E-mail" onChange={handleChange} disabled name="email" value={account.email} />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Phone Number</Form.Label>

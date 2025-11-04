@@ -2,63 +2,46 @@ import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { removeToken } from "../services/TokenService";
-
+import "../assets/css/NavBar.css";
+import lotusLogo from "../assets/Images/lotus_logo_svg.svg";
 
 export function Navigationbar() {
 
     const navigate = useNavigate();
-    
-        const handleLogout = ()=>{
-            removeToken();
-            navigate("/");
-        }
 
+    const handleLogout = () => {
+        removeToken();
+        navigate("/");
+    }
     return (
-        <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
+        <Navbar expand="lg" className="app-navbar" bg="dark" data-bs-theme="dark" sticky="top">
             <Container>
-                <Navbar.Brand href="#home">Yoga Center App</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Brand className="nav-brand" href="/">
+                    <img src={lotusLogo} alt="Lotus Logo" className="lotus-logo " />
+                </Navbar.Brand>
+
+                <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-toggle" />
+
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
+                    <Nav className="me-auto nav-links">
                         <LinkContainer to="/">
-                            <Nav.Link>Dashboard</Nav.Link>
-                        </LinkContainer>
-
-                        <LinkContainer to="/add-courses">
-                            <Nav.Link>Add Courses</Nav.Link>
-                        </LinkContainer>
-
-                        <LinkContainer to="/courses">
-                            <Nav.Link>Courses List</Nav.Link>
-                        </LinkContainer>
-
-                        <LinkContainer to="/contactus">
-                            <Nav.Link>Contact Us</Nav.Link>
-                        </LinkContainer>
-
-                        <LinkContainer to="/aboutus">
-                            <Nav.Link>About Us</Nav.Link>
+                            <Nav.Link className="nav-link-custom">Dashboard</Nav.Link>
                         </LinkContainer>
 
                         <LinkContainer to="/userdashboard">
-                            <Nav.Link>UserDashboard</Nav.Link>
+                            <Nav.Link className="nav-link-custom">User Dashboard</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/instructorDashboard">
+                            <Nav.Link className="nav-link-custom">Instructor Dashboard</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to="/add-user">
-                            <Nav.Link>Add User</Nav.Link>
-                        </LinkContainer>
-
-                        <LinkContainer to="/user-list">
-                            <Nav.Link>User List</Nav.Link>
-                        </LinkContainer>
-
-                        
-
+                    
                     </Nav>
                 </Navbar.Collapse>
-                
-                <Button variant="success" onClick={handleLogout}>Logout</Button>
+
+                 <Button className="Button-color" onClick={handleLogout}>Logout</Button>
             </Container>
         </Navbar>
-    )
+    );
 }
+

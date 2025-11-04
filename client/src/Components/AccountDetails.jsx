@@ -5,7 +5,10 @@ import { useNavigate } from "react-router-dom";
 import {getUserById} from "../services/UserService";
 
 export default function AccountDetails() {
-    const [Account, setAccount] = useState([]);
+     
+    const [Account, setAccount] = useState({ full_name: '', email: '', phone: '', password_hash: '' });
+ 
+
 
     const navigate = useNavigate();
 
