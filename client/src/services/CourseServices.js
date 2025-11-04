@@ -15,6 +15,9 @@ export function deleteCourse(id){
 export function getCourseByID(id){
     return axios.get(`${COURSES_API_URL}/${id}`);
 }
+export function getCourseByUserId(id){
+    return axios.get(`${}/`);
+}
 export function updateCourse(id, formData){
     return axios.put(`${COURSES_API_URL}/${id}`, formData);
 }
