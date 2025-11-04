@@ -1,26 +1,53 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Navigationbar } from "./Components/NavigationBar";
 import { Dashboard } from "./Components/Dashboard";
 import { ToastContainer } from "react-toastify";
 import { CoursesList } from "./Components/CoursesList";
 import { AddCourses } from "./Components/AddCourses";
 import { UpdateCourseForm } from "./Components/UpdateCoursebyID";
+import { Login } from "./Components/Login";
+import { PrivateRoute } from "./Components/PrivateRoute";
+import ContactPage from "./Components/ContactUs";
+import { AboutUs } from "./AboutUs";
+import { UDashboard } from "./Components/UserDashboard";
+import { AddUser } from "./Components/AddUser";
+import { ListUser } from "./Components/ListUser";
+import { UpdateUserForm } from "./Components/UpdateUserForm";
+import { Register } from "./Components/Register";
+
 
 
 function App() {
 
+  const location = useLocation();
+
   return (
-    <BrowserRouter>
-      <Navigationbar/>
-      <Routes>
-        <Route path="/" element={<Dashboard/>} />
-        <Route path="/add-courses" element={<AddCourses/>}/>
-        <Route path="/courses" element={<CoursesList/>} />
-        <Route path="/courses/:id" element={<UpdateCourseForm/>} />
+    <div>
+      {location.pathname !== "/" ? <Navigationbar /> : null}
+=      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+         <Route path="/contactus" element={<ContactPage/>} />
+         <Route path="/aboutus" element={<AboutUs/>} />
+         
+        <Route element={<PrivateRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/add-courses" element={<AddCourses/>}/>
+          <Route path="/courses" element={<CoursesList/>} />
+          <Route path="/courses/:id" element={<UpdateCourseForm/>} />
+          <Route path="/userdashboard" element={<UDashboard />} />
+          <Route path="/add-user" element={<AddUser/>}/>
+          <Route path="/user-list" element={<ListUser/>} />
+          <Route path="/edit-user/:id" element={<UpdateUserForm/>} />
+        </Route>
       </Routes>
       <ToastContainer/>
-    </BrowserRouter>
+    </div>
   )
 }
 
 export default App
+
+
+
+
