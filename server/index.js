@@ -3,7 +3,7 @@ import { connectDB } from './configs/dbConfig.js';
 import { getCourseById, getCourses, postContactUs } from './controllers/publicviewController.js';
 import { loginUser, registerUser } from './controllers/authController.js';
 import cors from 'cors';
-import { getAllUsers, getUserById, addUser, updateUserById, deleteUserById} from "./controllers/userController.js";
+import { getAllUsers, getUserById, addUser, updateUserById, deleteUserById, getUserCoursesById} from "./controllers/userController.js";
 import { addCourse, deleteCourseById, getCourseScheduledById, updateCourse } from './controllers/courseController.js';
 import { verifyToken } from './middlewares/VerifyToken.js';
 import { getAllCourseOfInstructorById, getAllStudentsByCourseId, getCourseScheduleById } from './controllers/instructorController.js';
@@ -36,7 +36,7 @@ app.get("/users/:id",getUserById);
 app.post("/users",addUser);
 app.put("/users/:id",updateUserById);
 app.delete("/users/:id",deleteUserById);
-
+app.get("/users/courses/:id",getUserCoursesById);
 
 
 

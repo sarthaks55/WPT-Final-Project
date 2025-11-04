@@ -3,7 +3,8 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { login } from "../services/AuthService";
 import { Link, useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
-import { getToken, storeToken, storeID } from "../services/TokenService";
+import { getToken, storeToken } from "../services/TokenService";
+import { getRoleID, getUsername, storeRoleID, storeUserID, storeUsername } from "../services/RoleNameService";
 
 export function Login() {
 
@@ -32,7 +33,9 @@ export function Login() {
             console.log(response);
             if(response.status === 200){
                 storeToken(response.data.token);
-                storeID(response.data.user_id);
+                storeRoleID(response.data.role_id);
+                storeUsername(response.data.username);
+                storeUserID(response.data.user_id);
                 navigate("/dashboard");
             }
         } catch (error) {

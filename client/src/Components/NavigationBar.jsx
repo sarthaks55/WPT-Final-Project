@@ -2,7 +2,7 @@ import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { removeToken } from "../services/TokenService";
-import { getUsername } from "../services/RoleNameService";
+import { getUsername, removeRoleID, removeUserID, removeUsername } from "../services/RoleNameService";
 
 
 export function Navigationbar() {
@@ -12,6 +12,9 @@ export function Navigationbar() {
     
         const handleLogout = ()=>{
             removeToken();
+            removeRoleID();
+            removeUsername();
+            removeUserID();
             navigate("/");
         }
 
