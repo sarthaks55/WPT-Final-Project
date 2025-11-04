@@ -82,3 +82,31 @@ export async function deleteCourseById(request, response){
         response.status(500).send({message:'Something went wrong'});
     }
 }
+
+
+
+export async function getCourseScheduledById(request, response){
+    try {
+        const connection = getConnectionObject();
+        const qry = `SELECT 
+                        cs.id AS schedule_id,
+                        cs.start_datetime,
+                        cs.end_datetime,
+                        cs.location,
+                        u.full_name AS instructor_name
+                    FROM course_schedules cs
+                    JOIN instructors i ON cs.instructor_id = i.id
+                    JOIN users u ON i.user_id = u.id
+                    WHERE cs.course_id =${request.params.id}`;
+        const [rows] = await connection.query(qry);
+        if(rows.length === 0){
+            response.status(404).send({message:'Course Schedule not found'});
+        }
+        else{
+            response.status(200).send(rows[0]);
+        }
+    } catch (error) {
+        console.log(error);
+        response.status(500).send({message:'Something went wrong'});
+    }
+}
