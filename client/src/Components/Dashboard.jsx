@@ -1,6 +1,6 @@
 import { Alert, Col, Container, Row } from "react-bootstrap";
 
-export function Dashboard() {
+export default function Dashboard() {
     return (
         <Container className="mt-5">
             <Row>

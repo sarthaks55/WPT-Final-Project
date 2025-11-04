@@ -50,8 +50,8 @@ export async function loginUser(req, res) {
         token,
         message: "Login successful",
         role_id: user.role_id,
-        username: user.full_name,
-        user_id: user.id   // <-- Added this line
+        user_id: user.id,
+        name: user.full_name  // <-- Added this line
       });
     } else {
       res.status(400).send({ message: "Login failed, password is invalid" });
