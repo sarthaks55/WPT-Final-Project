@@ -50,6 +50,7 @@ export async function loginUser(req, res) {
         token,
         message: "Login successful",
         role_id: user.role_id,
+        user_id: user.id,
         name: user.full_name  // <-- Added this line
       });
     } else {

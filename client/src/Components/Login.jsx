@@ -3,7 +3,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { login } from "../services/AuthService";
 import { Link, useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
-import { getToken, storeToken } from "../services/TokenService";
+import { getToken, storeToken, storeID } from "../services/TokenService";
 
 export function Login() {
 
@@ -30,6 +30,7 @@ export function Login() {
             console.log(response);
             if(response.status === 200){
                 storeToken(response.data.token);
+                storeID(response.data.user_id);
                 navigate("/dashboard");
             }
         } catch (error) {
