@@ -4,9 +4,10 @@ import { getCourseById, getCourses, postContactUs } from './controllers/publicvi
 import { loginUser, registerUser } from './controllers/authController.js';
 import cors from 'cors';
 import { getAllUsers, getUserById, addUser, updateUserById, deleteUserById} from "./controllers/userController.js";
-import { addCourse, deleteCourseById, updateCourse } from './controllers/courseController.js';
+import { addCourse, deleteCourseById, getCourseScheduledById, updateCourse } from './controllers/courseController.js';
 import { verifyToken } from './middlewares/VerifyToken.js';
 import { getAllCourseOfInstructorById, getAllStudentsByCourseId, getCourseScheduleById } from './controllers/instructorController.js';
+import { enroll } from './controllers/enrollmentController.js';
 
 const app = express();
 app.use(express.json());
@@ -44,7 +45,7 @@ app.get("/courses/:id",getCourseById);
 app.post("/courses",addCourse);
 app.put("/courses/:id",updateCourse);
 app.delete("/courses/:id",deleteCourseById);
-
+app.get("/courses/schedule/:id",getCourseScheduledById);
 
 
 app.get("/instructor/:id",getAllCourseOfInstructorById);
@@ -52,7 +53,7 @@ app.get("/instructor/courses/:id",getCourseScheduleById);
 app.get("/instructor/course/:id",getAllStudentsByCourseId);
 
 
-
+app.post("/enroll",enroll);
 
 
 

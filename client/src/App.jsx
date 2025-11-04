@@ -14,6 +14,8 @@ import { AddUser } from "./Components/AddUser";
 import { ListUser } from "./Components/ListUser";
 import { UpdateUserForm } from "./Components/UpdateUserForm";
 import { Register } from "./Components/Register";
+import { CourseList } from "./Components/CourseList";
+import { CourseDetails } from "./Components/CourseDetails";
 
 
 
@@ -29,11 +31,13 @@ function App() {
         <Route path="/register" element={<Register />} />
          <Route path="/contactus" element={<ContactPage/>} />
          <Route path="/aboutus" element={<AboutUs/>} />
+         <Route path="/courses" element={<CourseList/>} />
+         <Route path="/courses/:id" element={<CourseDetails/>} />
          
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/add-courses" element={<AddCourses/>}/>
-          <Route path="/courses" element={<CoursesList/>} />
+          <Route path="/courses-list" element={<CoursesList/>} />
           <Route path="/courses/:id" element={<UpdateCourseForm/>} />
           <Route path="/userdashboard" element={<UDashboard />} />
           <Route path="/add-user" element={<AddUser/>}/>

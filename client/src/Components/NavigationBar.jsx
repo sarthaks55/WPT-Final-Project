@@ -2,11 +2,13 @@ import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { removeToken } from "../services/TokenService";
+import { getUsername } from "../services/RoleNameService";
 
 
 export function Navigationbar() {
 
     const navigate = useNavigate();
+    const username = getUsername();
     
         const handleLogout = ()=>{
             removeToken();
@@ -28,7 +30,7 @@ export function Navigationbar() {
                             <Nav.Link>Add Courses</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to="/courses">
+                        <LinkContainer to="/courses-list">
                             <Nav.Link>Courses List</Nav.Link>
                         </LinkContainer>
 
@@ -56,7 +58,10 @@ export function Navigationbar() {
 
                     </Nav>
                 </Navbar.Collapse>
-                
+                <LinkContainer to="/courses">
+                    <Nav.Link>{username}</Nav.Link>
+                </LinkContainer>
+                    
                 <Button variant="success" onClick={handleLogout}>Logout</Button>
             </Container>
         </Navbar>

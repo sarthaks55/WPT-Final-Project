@@ -4,6 +4,7 @@ import { login } from "../services/AuthService";
 import { Link, useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 import { getToken, storeToken } from "../services/TokenService";
+import { getRoleID, getUsername, storeRoleID, storeUserID, storeUsername } from "../services/RoleNameService";
 
 export function Login() {
 
@@ -13,6 +14,8 @@ export function Login() {
 
     useEffect(()=>{
         const token = getToken();
+        const role_id = getRoleID();
+        const username = getUsername();
         if(token){
             navigate("/dashboard");
         }
@@ -30,6 +33,9 @@ export function Login() {
             console.log(response);
             if(response.status === 200){
                 storeToken(response.data.token);
+                storeRoleID(response.data.role_id);
+                storeUsername(response.data.username);
+                storeUserID(response.data.user_id);
                 navigate("/dashboard");
             }
         } catch (error) {
