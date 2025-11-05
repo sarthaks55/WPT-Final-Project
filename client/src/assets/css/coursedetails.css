@@ -1,0 +1,19 @@
+.course-details-card {
+  border-radius: 14px;
+  max-width: 700px;
+  width: 100%;
+  transition: 0.25s ease-in-out;
+}
+
+.course-details-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.course-details-card h2 {
+  font-size: 1.8rem;
+}
+
+.course-details-card strong {
+  color: #0d6efd;
+}

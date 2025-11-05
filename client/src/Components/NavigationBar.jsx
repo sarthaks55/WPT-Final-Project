@@ -36,11 +36,7 @@ export function Navigationbar() {
                         <LinkContainer to="/">
                             <Nav.Link className="nav-link-custom">Dashboard</Nav.Link>
                         </LinkContainer>
-                         <LinkContainer to="/add-courses">
-                            <Nav.Link  className="nav-link-custom">Add Courses</Nav.Link>
-                        </LinkContainer>
-
-                        <LinkContainer to="/courses-list">
+                        <LinkContainer to="/courses">
                             <Nav.Link  className="nav-link-custom">Courses List</Nav.Link>
                         </LinkContainer>
 
@@ -56,7 +52,7 @@ export function Navigationbar() {
                         <LinkContainer to="/adminDashboard">
                             <Nav.Link className="nav-link-custom">Admin Dashboard</Nav.Link>
                         </LinkContainer>
-                         <LinkContainer to="/courses">
+                         <LinkContainer to="/userdashboard">
                     <Nav.Link className="nav-link-custom">{username}</Nav.Link>
                 </LinkContainer>
 
