@@ -1,11 +1,13 @@
+
 import { useEffect, useState } from "react";
 import { Alert, Button, Col, Container, Modal, Row, Table } from "react-bootstrap";
-import { getCourseByUserId } from "../services/CourseServices";
-import '../assets/css/productlist.css';
+
+import '../../assets/css/productlist.css';
 import { Bounce, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { getCourseByInstructorId } from "../../services/CourseServices";
 
-export function UserCoursesList() {
+export function InstructorCoursesList() {
 
     const [courses, setCourses] = useState([]);
     const ID = localStorage.getItem("user_id");
@@ -15,7 +17,7 @@ export function UserCoursesList() {
 
     const fetchCourses = async () => {
         try {
-            const response = await getCourseByUserId(ID);
+            const response = await getCourseByInstructorId(ID);
             console.log(response.data);
             setCourses(response.data);
         } catch (error) {
@@ -42,7 +44,7 @@ export function UserCoursesList() {
                 </Col>
             </Row>
             {
-                courses.length === 0 ? <Alert variant="warning">No Courses found</Alert> : <Table className="mt-3">
+                courses.length === 0 ? <Alert variant="warning">No Courses found</Alert> : <Table bordered hover className="align-middle text-center">
                     <thead>
                         <tr >
                             <th>ID</th>

@@ -3,6 +3,79 @@ import { getConnectionObject } from "../configs/dbConfig.js";
 
 
 
+export async function getAllInstructor (req, res){
+    try {
+        const conn=getConnectionObject();
+        const [rows] = await conn.query("SELECT * FROM instructors");
+        res.status(200).send(rows);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching users", error });
+    }
+};
+
+export async function getInstructorById(req, res) {
+    try {
+        const conn=getConnectionObject();
+        const [rows] = await conn.query("SELECT * FROM instructors WHERE user_id = ?", [req.params.id]);
+        if (rows.length === 0) {
+            res.status(404).send({ message: "Instructor not found" });
+        } else {
+            res.status(200).send(rows[0]);
+        }
+    } catch (error) {
+        res.status(500).send({ message: "Error fetching user", error });
+    }
+};
+
+
+
+export async function updateInstructorById (req, res){
+    try {
+    const conn = getConnectionObject();
+    
+    const { bio, specialty, experience_years, certifications, rating, available_days, session_duration, languages   } = req.body;
+    const qry = `UPDATE instructors SET 
+        bio='${bio}', 
+        specialty='${specialty}', 
+        experience_years = '${experience_years}',
+    certifications = '${certifications}',
+    rating = ${rating},
+    available_days = '${available_days}',
+    session_duration = ${session_duration},
+    languages = '${languages}'
+
+      WHERE user_id=${req.params.id}
+    `;
+    const [result] = await conn.query(qry);
+
+    if (result.affectedRows === 1) {
+      res.status(200).send({ message: "Instructor updated successfully" });
+    } else {
+      res.status(404).send({ message: "Instructor not found" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: "Something went wrong" });
+  }
+};
+
+
+export async function deleteInstructorById(req, res){
+    try {
+        const conn=getConnectionObject();
+        const [result] = await conn.query("DELETE FROM instructors WHERE user_id = ?", [req.params.id]);
+        if (result.affectedRows === 0) {
+            res.status(404).send({ message: "Instructor not found" });
+        } else {
+            res.status(200).send({ message: "Instructor deleted successfully" });
+        }
+    } catch (error) {
+        res.status(500).send({ message: "Error deleting Instructor", error });
+    }
+};
+
+
+
 export async function getAllCourseOfInstructorById(request, response) {
   try {
     const connection = getConnectionObject();
@@ -16,7 +89,7 @@ export async function getAllCourseOfInstructorById(request, response) {
                 FROM courses c
                 JOIN course_schedules cs ON c.id = cs.course_id
                 JOIN instructors i ON cs.instructor_id = i.id
-                WHERE i.id = ${request.params.id}
+                WHERE i.user_id = ${request.params.id}
                 GROUP BY c.id;
             `;
     const [rows] = await connection.query(qry);

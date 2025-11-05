@@ -6,15 +6,17 @@ import lotusLogo from "../assets/Images/lotus_logo_svg.svg";
 import contactBg from "../assets/Images/contact-us-bg.png"; 
 import {ContactUs} from "../services/ContactServices"
 import { Bounce, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function ContactPage() {
 
-
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: ''});
-
+  const initialState = { name: '', email: '', phone: '', message: ''};
+  const [formData, setFormData] = useState(initialState);
+  const navigate = useNavigate();
   const handleChange = (event) => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
     }
+
 
     const handleSubmit = async (event) => {
         try {
@@ -35,6 +37,8 @@ function ContactPage() {
                     theme: "colored",
                     transition: Bounce,
                 });
+                setFormData(initialState);
+                
             }
         } catch (error) {
             console.log(error);

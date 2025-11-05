@@ -6,7 +6,7 @@ import cors from 'cors';
 import { getAllUsers, getUserById, addUser, updateUserById, deleteUserById, getUserCoursesById} from "./controllers/userController.js";
 import { addCourse, deleteCourseById, getCourseScheduledById, updateCourse } from './controllers/courseController.js';
 import { verifyToken } from './middlewares/VerifyToken.js';
-import { getAllCourseOfInstructorById, getAllStudentsByCourseId, getCourseScheduleById } from './controllers/instructorController.js';
+import { getAllCourseOfInstructorById, getAllStudentsByCourseId, getCourseScheduleById, getInstructorById, updateInstructorById } from './controllers/instructorController.js';
 import { enroll } from './controllers/enrollmentController.js';
 
 const app = express();
@@ -48,9 +48,13 @@ app.delete("/courses/:id",deleteCourseById);
 app.get("/courses/schedule/:id",getCourseScheduledById);
 
 
-app.get("/instructor/:id",getAllCourseOfInstructorById);
-app.get("/instructor/courses/:id",getCourseScheduleById);
-app.get("/instructor/course/:id",getAllStudentsByCourseId);
+app.get("/instructor/courses/:id",getAllCourseOfInstructorById);
+app.get("/instructor/courses/schedule/:id",getCourseScheduleById);
+app.get("/instructor/course/student/:id",getAllStudentsByCourseId);
+app.get("/instructor/:id",getInstructorById);
+app.post("/instructor/:id",updateInstructorById);
+
+
 
 
 app.post("/enroll",enroll);
