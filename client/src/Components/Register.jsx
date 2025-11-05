@@ -3,6 +3,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { register } from "../services/AuthService";
 import { Link, useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
+import "../assets/css/register.css";
 
 export function Register() {
   const [formData, setFormData] = useState({
@@ -47,14 +48,34 @@ export function Register() {
   };
 
   return (
-    <Container>
-      <Row className="mt-3">
-        <Col lg={6}>
-          <h3>Register</h3>
+    <div className="register-page-container">
+      <div className="register-card">
+
+        <div className="register-right-panel">
+          <h1 className="fw-bold">Welcome Back!</h1>
+          <p className="mt-2">
+            Start your journey with us by creating an account.
+          </p>
+
+          <Button
+            variant="outline-light"
+            className="mt-3 px-4 py-2"
+            as={Link}
+            to="/"
+          >
+            LOGIN
+          </Button>
+        </div>
+
+
+        <div className="register-left-panel">
+          <h2 className="fw-bold text-center mb-4 register-title">Register</h2>
+
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
-              <Form.Label>Name</Form.Label>
+              <Form.Label style={{ color: 'white'}}>Name</Form.Label>
               <Form.Control
+                style={{ color: 'white', backgroundColor: '#262728' }}  
                 type="text"
                 placeholder="Enter full name"
                 name="full_name"
@@ -64,8 +85,9 @@ export function Register() {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Email</Form.Label>
+              <Form.Label style={{ color: 'white'}}>Email</Form.Label>
               <Form.Control
+                style={{ color: 'white', backgroundColor: '#262728' }}  
                 type="email"
                 placeholder="Enter email"
                 name="email"
@@ -75,8 +97,9 @@ export function Register() {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Password</Form.Label>
+              <Form.Label style={{ color: 'white'}}>Password</Form.Label>
               <Form.Control
+                style={{ color: 'white', backgroundColor: '#262728' }}  
                 type="password"
                 placeholder="Enter password"
                 name="password_hash"
@@ -86,8 +109,9 @@ export function Register() {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Phone</Form.Label>
+              <Form.Label style={{ color: 'white'}}>Phone</Form.Label>
               <Form.Control
+                style={{ color: 'white', backgroundColor: '#262728' }}  
                 type="text"
                 placeholder="Enter phone number"
                 name="phone"
@@ -96,15 +120,20 @@ export function Register() {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
-              Register
-            </Button>
-            <Link to="/">
-                <span>login</span>
-            </Link>
+            <div className="d-flex justify-content-center">
+              <Button type="submit" className="register-btn px-5 py-2">
+                Register
+              </Button>
+            </div>
+
+            <div className="text-center mt-3">
+              <Link to="/" className="register-link">
+                Already have an account? Login
+              </Link>
+            </div>
           </Form>
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 }

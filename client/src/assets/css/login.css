@@ -1,0 +1,76 @@
+
+
+.login-page-container {
+  background: #EE6B1A;
+  background: linear-gradient(135deg, #EE6B1A, #FEFF58);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  width: 900px;
+  background: #262728;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.login-left-panel {
+  width: 45%;
+  background-image: url('../Images/login3.png');
+  background-size: cover; 
+  background-position: center center;
+  color: white;
+  padding: 50px;
+  
+}
+
+.left-content {
+    margin-top: 100px;
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-control {
+    background-color: #262728;
+}
+
+.login-right-panel {
+  width: 55%;
+  padding: 50px;
+}
+
+.login-title {
+  color: #d7644d;
+}
+
+.login-link {
+  text-decoration: none;
+  color: #d7644d;
+  font-weight: 500;
+}
+
+.login-btn {
+  background-color: #d7644d !important;
+  border: none !important;
+}
+
+@media (max-width: 768px) {
+  .login-card {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .login-left-panel, .login-right-panel {
+    width: 100%;
+    text-align: center;
+  }
+
+  .login-left-panel {
+    border-radius: 0 0 40px 40px;
+  }
+}

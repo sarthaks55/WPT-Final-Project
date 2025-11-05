@@ -1,0 +1,67 @@
+.register-page-container {
+  background: #EE6B1A;
+  background: linear-gradient(135deg, #EE6B1A, #FEFF58);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-card {
+  width: 900px;
+  background: #262728;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.register-left-panel {
+  width: 55%;
+  padding: 50px;
+}
+
+.register-title {
+  color: #d7644d;
+}
+
+.register-btn {
+  background-color: #d7644d !important;
+  border: none !important;
+}
+
+.register-link {
+  text-decoration: none;
+  color: #d7644d;
+  font-weight: 500;
+}
+
+.register-right-panel {
+  width: 45%;
+  background-image: url('../Images/register.png');
+  background-size: cover; 
+  background-position: center center;
+  color: white;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .register-card {
+    flex-direction: column-reverse;
+    width: 95%;
+  }
+
+  .register-left-panel, .register-right-panel {
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .register-right-panel {
+    border-radius: 0 0 40px 40px;
+  }
+}
