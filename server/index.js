@@ -1,6 +1,6 @@
 import express from 'express';
 import { connectDB } from './configs/dbConfig.js';
-import { getCourseById, getCourses, postContactUs } from './controllers/publicviewController.js';
+import { getContactUs, getCourseById, getCourses, postContactUs } from './controllers/publicviewController.js';
 import { loginUser, registerUser } from './controllers/authController.js';
 import cors from 'cors';
 import { getAllUsers, getUserById, addUser, updateUserById, deleteUserById, getUserCoursesById} from "./controllers/userController.js";
@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 app.get("/courses",getCourses);
 app.get("/courses/:id",getCourseById);
 app.post("/contactus",postContactUs);
-
+app.get("/contactus",getContactUs);
 
 app.post("/register",registerUser);
 app.post("/login",loginUser);

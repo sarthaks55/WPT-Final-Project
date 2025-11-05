@@ -27,6 +27,16 @@ export async function getCourseById (req,res){
 
 
 
+export async function getContactUs(req,res){
+    try {
+        const conn = getConnectionObject();
+        const [rows] = await conn.query("SELECT * FROM contact_us");
+        res.status(200).send(rows);
+    } catch (error) {
+        res.status(500).send({message:"Error "});
+    }
+}
+
 
 export async function postContactUs(request, response){
     try {

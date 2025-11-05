@@ -34,7 +34,8 @@ export function Login() {
             if(response.status === 200){
                 storeToken(response.data.token);
                 storeRoleID(response.data.role_id);
-                storeUsername(response.data.username);
+                storeUsername(response.data.name);
+                console.log(response.data.username);
                 storeUserID(response.data.user_id);
                 navigate("/dashboard");
             }

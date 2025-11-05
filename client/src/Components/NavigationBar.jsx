@@ -53,6 +53,9 @@ export function Navigationbar() {
                         <LinkContainer to="/instructorDashboard">
                             <Nav.Link className="nav-link-custom">Instructor Dashboard</Nav.Link>
                         </LinkContainer>
+                        <LinkContainer to="/adminDashboard">
+                            <Nav.Link className="nav-link-custom">Admin Dashboard</Nav.Link>
+                        </LinkContainer>
                          <LinkContainer to="/courses">
                     <Nav.Link className="nav-link-custom">{username}</Nav.Link>
                 </LinkContainer>
