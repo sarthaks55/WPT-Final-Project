@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 import { getToken, storeToken } from "../services/TokenService";
 import { getRoleID, getUsername, storeRoleID, storeUserID, storeUsername } from "../services/RoleNameService";
+import "../assets/css/login.css"
 
 export function Login() {
 
@@ -60,30 +61,65 @@ export function Login() {
         
     }
 
-    return (
-        <Container>
-            <Row className="mt-3">
-                <Col lg={6}>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type="text" placeholder="Enter email" name="email" onChange={handleChange} />
-                        </Form.Group>
+return (
+    <div className="loginPage">   
+  <div className="login-page-container">
+    <div className="login-card">
+      <div className="login-left-panel">
+        <div className="left-content">
+            <h1 className="fw-bold">Welcome</h1>
+            <p className="mt-2">Discover Balance,Strength & Peace</p>
 
-                        <Form.Group className="mb-3">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Enter password" name="password_hash" onChange={handleChange} />
-                        </Form.Group>
+            <Button
+                variant="outline-light"
+                className="mt-3 px-4 py-2"
+                as={Link}
+                to="/register"
+            >
+                REGISTER
+                </Button>
+        </div>
+        
+      </div>
 
-                        <Button variant="primary" type="submit">
-                            Login
-                        </Button>
-                        <Link to="/register">
-                            <span>Register</span>
-                        </Link>
-                    </Form>
-                </Col>
-            </Row>
-        </Container>
-    )
+      <div className="login-right-panel">
+        <h2 className="fw-bold text-center mb-4 login-title">Sign In</h2>
+
+        <Form onSubmit={handleSubmit}>
+
+          <Form.Group className="mb-3">
+            <Form.Label style={{ color: 'white'}}>Email</Form.Label>
+            <Form.Control 
+              style={{ color: 'white', backgroundColor: '#262728' }}  
+              type="text"
+              placeholder="Enter your email"
+              name="email"
+              onChange={handleChange}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label style={{ color: 'white'}}>Password</Form.Label>
+            <Form.Control
+              style={{ color: 'white', backgroundColor: '#262728' }}  
+              type="password"
+              placeholder="Enter your password"
+              name="password_hash"
+              onChange={handleChange}
+            />
+          </Form.Group>
+
+          
+          <div className="d-flex justify-content-center">
+            <Button type="submit" className="login-btn px-5 py-2">
+              LOGIN
+            </Button>
+          </div>
+        </Form>
+      </div>
+    </div>
+  </div>
+  </div>
+)
+
 }

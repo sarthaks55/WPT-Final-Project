@@ -33,6 +33,7 @@ import { UserCoursesList } from "./Components/MyClass";
 import { InstructorCoursesList } from "./Components/Instructor_Dashboard/InstructorCourses";
 import InstructorDetails from "./Components/Instructor_Dashboard/InstructorDetails";
 import EditInstructorDetails from "./Components/Instructor_Dashboard/EditInstructorDetails";
+import Home from "./pages/Home";
 
 
 function App() {
@@ -43,7 +44,8 @@ function App() {
     <div>
       {location.pathname !== "/" ? <Navigationbar /> : null}
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/contactus" element={<ContactPage />} />
         <Route path="/aboutus" element={<AboutUs />} />
