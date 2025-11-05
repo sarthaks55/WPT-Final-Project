@@ -1,0 +1,32 @@
+/* Center the caption vertically */
+.yoga-slider .carousel-caption {
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: initial;
+}
+
+/* Solid background for caption */
+/* .slider-caption {
+  background-color: none; 
+  padding: 20px 40px;
+  border-radius: 20px;
+  display: inline-block;
+  text-align: center;
+  color: #333;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+} */
+
+/* Caption heading */
+.slider-caption h2 {
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  color: brown; /* deep earthy tone */
+}
+
+/* Caption text */
+.slider-caption p {
+  font-size: 1.1rem;
+  color: goldenrod;
+  margin: 0;
+}
