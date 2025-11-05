@@ -3,6 +3,73 @@ import { getConnectionObject } from "../configs/dbConfig.js";
 
 
 
+export async function getAllInstructor (req, res){
+    try {
+        const conn=getConnectionObject();
+        const [rows] = await conn.query("SELECT * FROM instructors");
+        res.status(200).send(rows);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching users", error });
+    }
+};
+
+export async function getInstructorById(req, res) {
+    try {
+        const conn=getConnectionObject();
+        const [rows] = await conn.query("SELECT * FROM instructors WHERE user_id = ?", [req.params.id]);
+        if (rows.length === 0) {
+            res.status(404).send({ message: "Instructor not found" });
+        } else {
+            res.status(200).send(rows[0]);
+        }
+    } catch (error) {
+        res.status(500).send({ message: "Error fetching user", error });
+    }
+};
+
+
+
+export async function updateInstructorById (req, res){
+    try {
+    const conn = getConnectionObject();
+    
+    const { bio, specialty, profile_image } = req.body;
+    const qry = `UPDATE instructors SET 
+        bio='${bio}', 
+        specialty='${specialty}', 
+        profile_image='${profile_image}'
+      WHERE user_id=${req.params.id}
+    `;
+    const [result] = await conn.query(qry);
+
+    if (result.affectedRows === 1) {
+      res.status(200).send({ message: "Instructor updated successfully" });
+    } else {
+      res.status(404).send({ message: "Instructor not found" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: "Something went wrong" });
+  }
+};
+
+
+export async function deleteInstructorById(req, res){
+    try {
+        const conn=getConnectionObject();
+        const [result] = await conn.query("DELETE FROM instructors WHERE user_id = ?", [req.params.id]);
+        if (result.affectedRows === 0) {
+            res.status(404).send({ message: "Instructor not found" });
+        } else {
+            res.status(200).send({ message: "Instructor deleted successfully" });
+        }
+    } catch (error) {
+        res.status(500).send({ message: "Error deleting Instructor", error });
+    }
+};
+
+
+
 export async function getAllCourseOfInstructorById(request, response) {
   try {
     const connection = getConnectionObject();

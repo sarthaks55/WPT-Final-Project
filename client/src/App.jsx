@@ -19,9 +19,17 @@ import EditAccountDetails from "./Components/EditAccountDetails";
 import InstructorDashboard from "./Components/Instructor_Dashboard/InstructorDashboard"
 import { CourseList } from "./Components/CourseList";
 import { CourseDetails } from "./Components/CourseDetails";
-import { NavBar } from "./Components/Home/NavBar";
+import AdminDashboard from "./Components/Admin_Dashboard/AdminDashboard";
+import AdDashboard from "./Components/Admin_Dashboard/AdDashboard";
+import UserList from "./Components/Admin_Dashboard/UserList";
+import EditUser from "./Components/Admin_Dashboard/EditUser";
+import AddCourse from "./Components/Admin_Dashboard/AddCourse";
+import EditCourse from "./Components/Admin_Dashboard/EditCourse";
+import InstructorList from "./Components/Admin_Dashboard/InstructorList";
+import Feedbacks from "./Components/Admin_Dashboard/Feedbacks";
+import Logout from "./Components/Admin_Dashboard/Logout";
+import CoursesLists from "./Components/Admin_Dashboard/CoursesLists";
 import Home from "./pages/Home";
-
 
 
 function App() {
@@ -39,6 +47,8 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/courses" element={<CourseList/>} />
         <Route path="/courses/:id" element={<CourseDetails/>} />
+
+
 
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
@@ -60,6 +70,26 @@ function App() {
           <Route path="/add-user" element={<AddUser />} />
           <Route path="/user-list" element={<ListUser />} />
           <Route path="/edit-user/:id" element={<UpdateUserForm />} />
+
+          <Route path="/adminDashboard" element={<AdminDashboard />} >
+            <Route index element={<AdDashboard />} />
+            <Route path="dashboard" element={<AdDashboard />} />
+
+            {/* User Routes */}
+            <Route path="users" element={<UserList/>} />
+            <Route path="users/add" element={<AddUser />} />
+            <Route path="users/edit/:id" element={<EditUser />} />
+
+            {/* Course Routes */}
+            <Route path="courses" element={<CoursesLists />} />
+            <Route path="courses/add" element={<AddCourse />} />
+            <Route path="courses/edit/:id" element={<EditCourse />} />
+
+            {/* Other Routes */}
+            <Route path="instructors" element={<InstructorList />} />
+            <Route path="feedbacks" element={<Feedbacks />} />
+            <Route path="logout" element={<Logout />} />
+          </Route>
         </Route>
       </Routes>
       <ToastContainer />
