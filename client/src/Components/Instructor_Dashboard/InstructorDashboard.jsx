@@ -1,11 +1,12 @@
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Offcanvas, Button } from "react-bootstrap";
 import { Outlet, useLocation } from "react-router-dom";
-import Sidebar from "./sidebar";
+
+import InstructorSidebar from "./InstructorSidebar";
 
 
-export default function UDashboard() {
+export default function InstructorDashboard() {
   const [show, setShow] = useState(false);
   const location = useLocation();
 
@@ -23,20 +24,18 @@ export default function UDashboard() {
           className="d-none d-md-block"
           style={{ minHeight: "80vh" }}
         >
-          <Sidebar />
+          <InstructorSidebar />
         </Col>
 
 
         <Col xs={12} className="d-md-none mb-3">
           <div className="d-flex justify-content-between align-items-center">
-            <h5 className="mb-0">Dashboard</h5>
+            <h5 className="mb-0">Instructor Dashboard</h5>
             <Button variant="outline-danger" onClick={() => setShow(true)}>
               Menu
             </Button>
           </div>
         </Col>
-
-
         <Col xs={12} md={9} lg={10}>
           <Outlet />
         </Col>
@@ -50,7 +49,7 @@ export default function UDashboard() {
         <Offcanvas.Body>
 
           {show && (
-            <Sidebar onClickItem={() => setShow(false)} />
+            <InstructorSidebar onClickItem={() => setShow(false)} />
           )}
 
         </Offcanvas.Body>

@@ -20,4 +20,3 @@ export function getUserById(id){
 export function updateUser(id, formData){
     return axios.put(`${USER_API_URL}/${id}`, formData);
 }
-// 100 functions

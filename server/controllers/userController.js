@@ -97,3 +97,16 @@ export async function deleteUserById(req, res){
 };
 
 
+export async function getUserCoursesById(req, res) {
+    try {
+        const conn=getConnectionObject();
+        const [rows] = await conn.query("SELECT c.id AS course_id,c.name AS course_name,c.description,c.difficulty,c.duration_weeks,c.price,e.enrollment_date,e.status FROM enrollments e JOIN courses c ON e.course_id = c.id WHERE e.user_id = ?", [req.params.id]);
+        if (rows.length === 0) {
+            res.status(404).send({ message: "Courses not found" });
+        } else {
+            res.status(200).send(rows);
+        }
+    } catch (error) {
+        res.status(500).send({ message: "Error fetching user", error });
+    }
+};
