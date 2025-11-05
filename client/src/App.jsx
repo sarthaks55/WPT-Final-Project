@@ -19,6 +19,8 @@ import EditAccountDetails from "./Components/EditAccountDetails";
 import InstructorDashboard from "./Components/Instructor_Dashboard/InstructorDashboard"
 import { CourseList } from "./Components/CourseList";
 import { CourseDetails } from "./Components/CourseDetails";
+import { NavBar } from "./Components/Home/NavBar";
+import Home from "./pages/Home";
 
 
 
@@ -30,7 +32,8 @@ function App() {
     <div>
       {location.pathname !== "/" ? <Navigationbar /> : null}
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/contactus" element={<ContactPage />} />
         <Route path="/aboutus" element={<AboutUs />} />
