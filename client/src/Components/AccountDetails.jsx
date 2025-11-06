@@ -14,7 +14,7 @@ export default function AccountDetails() {
 
     const ID = localStorage.getItem("user_id");
     if (!ID) return;
-    console.log(ID);
+    
     
    
 
@@ -31,7 +31,9 @@ export default function AccountDetails() {
     useEffect(() => {
         fetchDetails();
     }, []);
-
+    const handleClick =  ()=>{
+         navigate(`editDetails/${ID}`);
+    }
 
 
     return (
@@ -57,9 +59,8 @@ export default function AccountDetails() {
                             <Form.Control placeholder="Phone" disabled value={Account.password_hash}  type="password"/>
                         </Form.Group>
                         <div className="d-flex gap-2">
-                            <Button variant="danger" onClick={() => {
-                                navigate(`editDetails/${ID}`);
-                            }}>Edit</Button>
+                            <Button variant="danger" onClick={handleClick}
+                            >Edit</Button>
                         </div>
                     </Col>
                 </Row>

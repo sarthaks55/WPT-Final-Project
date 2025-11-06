@@ -3,16 +3,19 @@ import { LinkContainer } from "react-router-bootstrap";
 import { removeToken } from "../../services/TokenService";
 import "../../assets/css/NavBar.css";
 import lotusLogo from "../../assets/Images/lotus_logo_svg.svg";
-import { getUsername, removeRoleID, removeUserID, removeUsername } from "../../services/RoleNameService";
+import { getRoleID, getUsername, removeRoleID, removeUserID, removeUsername } from "../../services/RoleNameService";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { isLoggedIn } from "../../services/TokenService";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 export function PublicNavBar() {
     const navigate = useNavigate();
-
+    const role_id = getRoleID();
+    const username = getUsername();
     const handleClick = async (event)=>{
         try {
             await navigate('/login');
@@ -20,6 +23,15 @@ export function PublicNavBar() {
             console.log(error);
         } 
     }
+
+    const handleLogout = async () => {
+        removeToken();
+        removeRoleID();
+        removeUsername();
+        removeUserID();
+        await navigate("/");
+    }
+
     return (
 
 
@@ -55,10 +67,34 @@ export function PublicNavBar() {
                         
                     </Nav>
                 </Navbar.Collapse>
+                <FontAwesomeIcon icon={faUser} className="me-1" style={{ color: 'white' }} />
+                {role_id === "3" ? (
+
+                <DropdownButton className="no-style-dropdown d-none d-lg-block" title={username}>
+                    <Dropdown.Item href="/userdashboard">User Dashboard</Dropdown.Item>
+                    <Dropdown.Item onClick={handleLogout}>logout</Dropdown.Item>
+                </DropdownButton>
+                
+                ) : role_id === "2" ? (
+
+                <DropdownButton className="no-style-dropdown d-none d-lg-block" title={username}>
+                    <Dropdown.Item href="/instructorDashboard">Instructor Dashboard</Dropdown.Item>
+                    <Dropdown.Item onClick={handleLogout}>logout</Dropdown.Item>
+                </DropdownButton>
+                
+                ) : role_id === "1" ? (
+
+                
+                <DropdownButton className="no-style-dropdown d-none d-lg-block" title={username}>
+                    <Dropdown.Item href="/adminDashboard">Admin Dashboard</Dropdown.Item>
+                    <Dropdown.Item onClick={handleLogout}>logout</Dropdown.Item>
+                </DropdownButton>
+                
+                ) : (
 
                 <Button className="Username-Button d-none d-lg-block"onClick={handleClick}>Login</Button>
-                    
                 
+                )}
 
             </Container>
         </Navbar>
