@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
 import { enrollInCourse, getCourseByID, getCourseScheduleByID } from "../services/CourseServices";
-import { getUserID } from "../services/RoleNameService";
+import { getRoleID, getUserID } from "../services/RoleNameService";
 import { Bounce, toast } from "react-toastify";
 import { FaBook, FaCalendarAlt, FaClock, FaMapMarkerAlt, FaMoneyBillWave, FaUserGraduate } from "react-icons/fa";
 import "../assets/css/coursedetails.css";
@@ -12,6 +12,7 @@ export function CourseDetails() {
   const [course, setCourse] = useState(null);
   const [courseschedule, setCourseschedule] = useState(null);
   const user_id = getUserID();
+  const role_id = getRoleID();
 
   const   fetchCourse = async() => {
     try {
@@ -30,6 +31,20 @@ export function CourseDetails() {
   }
 
   const handleSubmit = async (event) => {
+    if (role_id !== 3) {
+        toast.warning("Please login as User ⚠️", {
+            position: "top-right",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+        });
+        return; 
+    }
         try {
             const response = await enrollInCourse(formData);
             if (response.status === 200) {

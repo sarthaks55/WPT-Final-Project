@@ -10,7 +10,6 @@ import { Navigationbar } from "../Components/NavigationBar";
 const Home = () => {
     return(
         <div>
-            <Navigationbar/>
             <YogaSlider/>
 
             <div className="mt-5">
