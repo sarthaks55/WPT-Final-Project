@@ -1,15 +1,16 @@
 import ExperienceSlider from "../Components/Home/ExperienceSlider";
 import FeaturedVideos from "../Components/Home/FeaturedVideos";
 import Footer from "../Components/Home/Footer";
-import { NavBar } from "../Components/Home/NavBar";
+
 import YogaHighlights from "../Components/Home/YogaHighlights";
 import YogaInstitute from "../Components/Home/YogaInstitute";
 import YogaSlider from "../Components/Home/YogaSlider";
+import { Navigationbar } from "../Components/NavigationBar";
 
 const Home = () => {
     return(
         <div>
-            <NavBar/>
+            <Navigationbar/>
             <YogaSlider/>
 
             <div className="mt-5">

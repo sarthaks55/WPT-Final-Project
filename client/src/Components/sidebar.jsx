@@ -26,7 +26,7 @@ export default function Sidebar({ onClickItem }) {
 
       <Nav.Link
         as={NavLink}
-        to="/"
+        to="schedules/:id"
         onClick={onClickItem}
         className="sidebar-link text-decoration-none d-flex align-items-center gap-2"
       >

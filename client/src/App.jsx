@@ -13,7 +13,7 @@ import { AddUser } from "./Components/AddUser";
 import { ListUser } from "./Components/ListUser";
 import { UpdateUserForm } from "./Components/UpdateUserForm";
 import { Register } from "./Components/Register";
-import Dashboard from "./Components/Dashboard";
+
 import AccountDetails from "./Components/AccountDetails";
 import EditAccountDetails from "./Components/EditAccountDetails";
 import InstructorDashboard from "./Components/Instructor_Dashboard/InstructorDashboard"
@@ -27,13 +27,14 @@ import AddCourse from "./Components/Admin_Dashboard/AddCourse";
 import EditCourse from "./Components/Admin_Dashboard/EditCourse";
 import InstructorList from "./Components/Admin_Dashboard/InstructorList";
 import Feedbacks from "./Components/Admin_Dashboard/Feedbacks";
-import Logout from "./Components/Admin_Dashboard/Logout";
+
 import CoursesLists from "./Components/Admin_Dashboard/CoursesLists";
 import { UserCoursesList } from "./Components/MyClass";
 import { InstructorCoursesList } from "./Components/Instructor_Dashboard/InstructorCourses";
 import InstructorDetails from "./Components/Instructor_Dashboard/InstructorDetails";
 import EditInstructorDetails from "./Components/Instructor_Dashboard/EditInstructorDetails";
 import Home from "./pages/Home";
+import { ScheduleByUserId } from "./Components/ScheduleByUserId";
 
 
 function App() {
@@ -55,8 +56,8 @@ function App() {
 
 
         <Route element={<PrivateRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/add-courses" element={<AddCourses />} />
+          
+          
           <Route path="/courses-list" element={<CourseList />} />
           <Route path="/courses/:id" element={<UpdateCourseForm />} />
           <Route path="/instructorDashboard" element={<InstructorDashboard />}>
@@ -73,6 +74,7 @@ function App() {
             <Route path="account" element={< AccountDetails />} />
             <Route path="editDetails/:id" element={< EditAccountDetails />} />
             <Route path="user-courses/:id" element={< UserCoursesList/>}/>
+            <Route path="schedules/:id" element={< ScheduleByUserId/>}/>
           </Route>
           <Route path="/add-user" element={<AddUser />} />
           <Route path="/user-list" element={<ListUser />} />
@@ -95,7 +97,7 @@ function App() {
             {/* Other Routes */}
             <Route path="instructors" element={<InstructorList />} />
             <Route path="feedbacks" element={<Feedbacks />} />
-            <Route path="logout" element={<Logout />} />
+            
           </Route>
         </Route>
       </Routes>

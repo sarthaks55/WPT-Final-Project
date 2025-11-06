@@ -20,3 +20,8 @@ export function getUserById(id){
 export function updateUser(id, formData){
     return axios.put(`${USER_API_URL}/${id}`, formData);
 }
+
+export function getScheduleByUserId(id){
+    return axios.get(`${USER_API_URL}/schedules/${id}`);
+}
+
