@@ -18,3 +18,17 @@ export function updateInstructorById(id,Detail){
     
     return axios.post(`${INSTRUCTOR_API_URL}/${id}`,Detail);
 }
+
+export function deleteInstructor(id) {
+  return axios.delete(`${INSTRUCTOR_API_URL}/${id}`);
+}
+
+export function addInstructor(formData) {
+  return axios.post(`${INSTRUCTOR_API_URL}`, formData);
+}
+
+export function updateInstructor(id, data) {
+  return axios.put(`${INSTRUCTOR_API_URL}/update/${id}`, data);
+}
+
+
