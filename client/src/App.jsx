@@ -72,7 +72,7 @@ function App() {
           <Route path="/userdashboard" element={<UDashboard />} >
             <Route index element={< AccountDetails />} />
             <Route path="account" element={< AccountDetails />} />
-            <Route path="editDetails/:id" element={< EditAccountDetails />} />
+            <Route path="account/editDetails/:id" element={< EditAccountDetails />} />
             <Route path="user-courses/:id" element={< UserCoursesList/>}/>
             <Route path="schedules/:id" element={< ScheduleByUserId/>}/>
           </Route>

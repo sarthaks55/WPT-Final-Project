@@ -13,7 +13,7 @@ export default function EditAccountDetails() {
 
   const ID = localStorage.getItem("user_id");
   if (!ID) return;
-  console.log(ID);
+  
   const fetchDetails = async () => {
     try {
       const response = await getUserById(ID);
@@ -47,8 +47,9 @@ export default function EditAccountDetails() {
           theme: "colored",
           transition: Bounce,
         });
-        navigate("../account");
+        
       }
+      navigate("../account");
 
     } catch (error) {
       console.log(error);
@@ -69,6 +70,8 @@ export default function EditAccountDetails() {
     }
 
   }
+
+ 
   useEffect(() => {
     fetchDetails();
   }, []);
@@ -98,7 +101,7 @@ export default function EditAccountDetails() {
               <Form.Control placeholder="Password" onChange={handleChange} name="password_hash" value={account.password_hash} type="password" />
             </Form.Group>
             <div className="d-flex gap-2">
-              <Button variant="danger" type="submit"
+              <Button variant="danger" type="submit" 
               >Save Changes</Button>
             </div>
           </Col>
