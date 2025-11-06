@@ -18,7 +18,7 @@ export function Login() {
         const role_id = getRoleID();
         const username = getUsername();
         if(token){
-            navigate("/dashboard");
+            navigate("/");
         }
     },[]);
 
@@ -36,9 +36,10 @@ export function Login() {
                 storeToken(response.data.token);
                 storeRoleID(response.data.role_id);
                 storeUsername(response.data.name);
+                
                 console.log(response.data.username);
                 storeUserID(response.data.user_id);
-                navigate("/dashboard");
+                navigate("/");
             }
         } catch (error) {
             console.log(error);

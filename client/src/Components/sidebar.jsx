@@ -17,7 +17,7 @@ export default function Sidebar({ onClickItem }) {
 
       <Nav.Link
         as={NavLink}
-        to="/" 
+        to="user-courses/:id" 
         onClick={onClickItem}
         className="sidebar-link text-decoration-none d-flex align-items-center gap-2"
       >
@@ -26,11 +26,11 @@ export default function Sidebar({ onClickItem }) {
 
       <Nav.Link
         as={NavLink}
-        to="/"
+        to="schedules/:id"
         onClick={onClickItem}
         className="sidebar-link text-decoration-none d-flex align-items-center gap-2"
       >
-        Payment Methods
+        Schedule
       </Nav.Link>
     </Nav>
   );

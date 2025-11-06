@@ -5,6 +5,11 @@ export function storeID(ID){
     localStorage.setItem("user_id",ID);
 }
 
+export function isLoggedIn(value){
+    localStorage.setItem("isLoggedIn",value);
+}
+
+
 export function getToken(){
     return localStorage.getItem("token");
 }

@@ -3,7 +3,7 @@
   --bg-end:   #5a2f27;  
   --accent:   #f6a85b;  
   --muted:    #cfcfcf;
-  --logo-color: #d7644d;
+  --logo-color: #a94936;
   --glass:    rgba(255,255,255,0.06);
 }
 
@@ -73,6 +73,10 @@
   transform: translateY(-1px);
 }
 
+.Username-Button{
+  background-color: transparent !important;
+  border: none !important;
+}
 .Button-color{
     background-color: var(--logo-color) !important;
     border-color: var(--muted) !important;
@@ -83,6 +87,34 @@
     color: #ffffff !important;
     transform: translateY(-2px) scale(1.02);
   box-shadow: 0 8px 18px rgba(40,30,30,0.18);
+}
+
+.no-style-dropdown .dropdown-toggle {
+  background: transparent !important;
+  border: none !important;
+  color: white !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  font-weight: normal;
+}
+
+.no-style-dropdown .dropdown-toggle::after {
+  display: none !important; 
+}
+
+.no-style-dropdown .dropdown-toggle:hover,
+.no-style-dropdown .dropdown-toggle:focus {
+  background: transparent !important;
+  color: white !important;
+  box-shadow: none !important;
+}
+
+.no-style-dropdown .dropdown-menu {
+  background-color: var(--logo-color) !important;
+  color: #cfcfcf !important;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-top: 10px !important;
 }
 
 

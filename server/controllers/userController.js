@@ -110,3 +110,52 @@ export async function getUserCoursesById(req, res) {
         res.status(500).send({ message: "Error fetching user", error });
     }
 };
+
+
+export async function getUserSchedules(req, res) {
+  try {
+    const conn = getConnectionObject();
+    const userId = req.params.id; 
+
+    const qry = `
+      SELECT
+        cs.id AS schedule_id,
+        cs.course_id,
+        c.name AS course_name,
+        cs.instructor_id,
+        instr.full_name AS instructor_name,
+        cs.start_datetime,
+        cs.end_datetime,
+        cs.location
+      FROM course_schedules AS cs
+      JOIN enrollments AS e
+        ON e.course_id = cs.course_id
+      JOIN courses AS c
+        ON c.id = cs.course_id
+      LEFT JOIN users AS instr
+        ON instr.id = cs.instructor_id
+      WHERE e.user_id = ?
+        AND e.status = 'Active'
+      ORDER BY cs.start_datetime;
+    `;
+
+    const [rows] = await conn.query(qry, [userId]);
+
+    if (rows.length > 0) {
+      res.status(200).send(
+        
+        rows
+      );
+    } else {
+      res.status(404).send({
+        message: "No schedules found for this user",
+      });
+    }
+  } catch (error) {
+    console.error("Error fetching schedules:", error);
+    res.status(500).send({
+      message: "Something went wrong",
+      error: error.message,
+    });
+  }
+}

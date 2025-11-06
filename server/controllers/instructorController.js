@@ -33,11 +33,17 @@ export async function updateInstructorById (req, res){
     try {
     const conn = getConnectionObject();
     
-    const { bio, specialty, profile_image } = req.body;
+    const { bio, specialty, experience_years, certifications, rating, available_days, session_duration, languages   } = req.body;
     const qry = `UPDATE instructors SET 
         bio='${bio}', 
         specialty='${specialty}', 
-        profile_image='${profile_image}'
+        experience_years = '${experience_years}',
+    certifications = '${certifications}',
+    rating = ${rating},
+    available_days = '${available_days}',
+    session_duration = ${session_duration},
+    languages = '${languages}'
+
       WHERE user_id=${req.params.id}
     `;
     const [result] = await conn.query(qry);
@@ -83,7 +89,7 @@ export async function getAllCourseOfInstructorById(request, response) {
                 FROM courses c
                 JOIN course_schedules cs ON c.id = cs.course_id
                 JOIN instructors i ON cs.instructor_id = i.id
-                WHERE i.id = ${request.params.id}
+                WHERE i.user_id = ${request.params.id}
                 GROUP BY c.id;
             `;
     const [rows] = await connection.query(qry);

@@ -17,21 +17,23 @@ export default function InstructorSidebar({ onClickItem }) {
 
       <Nav.Link
         as={NavLink}
-        to="/" 
+        to="instructorDetails/:id" 
         onClick={onClickItem}
         className="sidebar-link text-decoration-none d-flex align-items-center gap-2"
       >
-        My Classes
+        Additional Details
       </Nav.Link>
 
       <Nav.Link
         as={NavLink}
-        to="courses"
+        to="instructor/courses/:id" 
         onClick={onClickItem}
         className="sidebar-link text-decoration-none d-flex align-items-center gap-2"
       >
-        All Courses
+        My Courses
       </Nav.Link>
+
+      
 
       <Nav.Link
         as={NavLink}

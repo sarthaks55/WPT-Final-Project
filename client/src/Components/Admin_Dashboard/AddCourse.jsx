@@ -23,10 +23,10 @@ const AddCourse = () => {
     e.preventDefault();
     try {
       await saveCourse(formData);
-      toast.success("Course Added Successfully 🎉", { transition: Bounce });
+      toast.success("Course Added Successfully", { transition: Bounce });
       navigate("/courses");
     } catch (error) {
-      toast.error("Failed to Add Course ❌", { transition: Bounce });
+      toast.error("Failed to Add Course", { transition: Bounce });
     }
   };
 
