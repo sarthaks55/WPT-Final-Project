@@ -1,6 +1,5 @@
 .register-page-container {
-  background: #EE6B1A;
-  background: linear-gradient(135deg, #EE6B1A, #FEFF58);
+  background-image: linear-gradient(-20deg, #616161 0%, #9bc5c3 100%);
   height: 100vh;
   display: flex;
   justify-content: center;

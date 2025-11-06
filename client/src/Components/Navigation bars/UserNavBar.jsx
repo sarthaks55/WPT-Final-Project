@@ -52,16 +52,16 @@ export function UserNavBar() {
                             <Nav.Link className="nav-link-custom">About Us</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to="/userdashboard">
+                        {/* <LinkContainer to="/userdashboard">
                             <Nav.Link className="nav-link-custom d-lg-none">User Dashboard</Nav.Link>
-                        </LinkContainer>
+                        </LinkContainer> */}
 
                         
-                            <Nav.Link className="nav-link-custom d-lg-none" onClick={handleLogout} >Logout</Nav.Link>
+                            {/* <Nav.Link className="nav-link-custom d-lg-none" onClick={handleLogout} >Logout</Nav.Link> */}
                         
                         
                     </Nav>
-                    <DropdownButton className="no-style-dropdown d-none d-lg-block" title={username}>
+                <DropdownButton className="no-style-dropdown d-none d-lg-block" title={username}>
                     <Dropdown.Item href="/userdashboard">User Dashboard</Dropdown.Item>
                     <Dropdown.Item onClick={handleLogout}>logout</Dropdown.Item>
                 </DropdownButton>

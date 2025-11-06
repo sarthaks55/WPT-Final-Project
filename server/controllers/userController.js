@@ -33,10 +33,9 @@ export async function addUser(request, response) {
     try {
         const connection = getConnectionObject();
         const { role_id, full_name, email, password_hash, phone } = request.body;
-
-        const qry = `
-            INSERT INTO users (role_id, full_name, email, password_hash, phone)
-            VALUES (${role_id}, '${full_name}', '${email}', '${password_hash}', '${phone}')
+        const encryptedPassword = hashSync(password_hash, 12);
+        const qry = `INSERT INTO users (role_id, full_name, email, password_hash, phone)
+            VALUES (${role_id}, '${full_name}', '${email}', '${encryptedPassword}', '${phone}')
         `;
 
         const [resultSet] = await connection.query(qry);

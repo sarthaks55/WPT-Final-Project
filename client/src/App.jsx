@@ -43,7 +43,7 @@ function App() {
 
   return (
     <div>
-      {location.pathname !== "/" ? <Navigationbar /> : null}
+      {location.pathname !== "/login" && location.pathname !== "/register" ? <Navigationbar /> : null}
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login />} />

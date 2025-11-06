@@ -1,30 +1,24 @@
-import { useState } from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { register } from "../services/AuthService";
 import { Link, useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 import "../assets/css/register.css";
+import { Formik, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 export function Register() {
-  const [formData, setFormData] = useState({
-    full_name: "",
-    email: "",
-    password_hash: "",
-    phone: "",
-  });
-
   const navigate = useNavigate();
 
-  const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  };
+  const registerValid = Yup.object().shape({
+    full_name: Yup.string().required("Name is required"),
+    email: Yup.string().required("Email is required").email("Email is invalid"),
+    password_hash: Yup.string().required("Password is required").matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,12}$/,"Password must be between 8 to 12 characters, at least one uppercase, one lowercase, one numeric, and no symbols allowed"),
+    phone: Yup.string().required("Phone is required").matches(/^[6-9]\d{9}$/, "Phone no. is invalid"),
+  });
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      const response = await register(formData);
-      console.log(response);
-
+      const response = await register(values);
       if (response.status === 200 || response.status === 201) {
         toast.success("Registration successful! Please login.", {
           position: "top-right",
@@ -32,7 +26,8 @@ export function Register() {
           theme: "colored",
           transition: Bounce,
         });
-        navigate("/");
+        resetForm();
+        navigate("/login");
       }
     } catch (error) {
       console.error(error);
@@ -44,6 +39,8 @@ export function Register() {
           transition: Bounce,
         });
       }
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -61,77 +58,109 @@ export function Register() {
             variant="outline-light"
             className="mt-3 px-4 py-2"
             as={Link}
-            to="/"
+            to="/login"
           >
             LOGIN
           </Button>
         </div>
 
-
         <div className="register-left-panel">
           <h2 className="fw-bold text-center mb-4 register-title">Register</h2>
 
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3">
-              <Form.Label style={{ color: 'white'}}>Name</Form.Label>
-              <Form.Control
-                style={{ color: 'white', backgroundColor: '#262728' }}  
-                type="text"
-                placeholder="Enter full name"
-                name="full_name"
-                onChange={handleChange}
-                required
-              />
-            </Form.Group>
+          <Formik
+            initialValues={{
+              full_name: "",
+              email: "",
+              password_hash: "",
+              phone: "",
+            }}
+            validationSchema={registerValid}
+            onSubmit={handleSubmit}
+          >
+            {({ handleSubmit, isSubmitting }) => (
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                  <Form.Label style={{ color: "white" }}>Name</Form.Label>
+                  <Field
+                    as={Form.Control}
+                    style={{ color: "white", backgroundColor: "#262728" }}
+                    type="text"
+                    placeholder="Enter full name"
+                    name="full_name"
+                  />
+                  <ErrorMessage
+                    name="full_name"
+                    component="div"
+                    className="text-danger mt-1"
+                  />
+                </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label style={{ color: 'white'}}>Email</Form.Label>
-              <Form.Control
-                style={{ color: 'white', backgroundColor: '#262728' }}  
-                type="email"
-                placeholder="Enter email"
-                name="email"
-                onChange={handleChange}
-                required
-              />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label style={{ color: "white" }}>Email</Form.Label>
+                  <Field
+                    as={Form.Control}
+                    style={{ color: "white", backgroundColor: "#262728" }}
+                    type="email"
+                    placeholder="Enter email"
+                    name="email"
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="text-danger mt-1"
+                  />
+                </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label style={{ color: 'white'}}>Password</Form.Label>
-              <Form.Control
-                style={{ color: 'white', backgroundColor: '#262728' }}  
-                type="password"
-                placeholder="Enter password"
-                name="password_hash"
-                onChange={handleChange}
-                required
-              />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label style={{ color: "white" }}>Password</Form.Label>
+                  <Field
+                    as={Form.Control}
+                    style={{ color: "white", backgroundColor: "#262728" }}
+                    type="password"
+                    placeholder="Enter password"
+                    name="password_hash"
+                  />
+                  <ErrorMessage
+                    name="password_hash"
+                    component="div"
+                    className="text-danger mt-1"
+                  />
+                </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label style={{ color: 'white'}}>Phone</Form.Label>
-              <Form.Control
-                style={{ color: 'white', backgroundColor: '#262728' }}  
-                type="text"
-                placeholder="Enter phone number"
-                name="phone"
-                onChange={handleChange}
-                required
-              />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label style={{ color: "white" }}>Phone</Form.Label>
+                  <Field
+                    as={Form.Control}
+                    style={{ color: "white", backgroundColor: "#262728" }}
+                    type="text"
+                    placeholder="Enter phone number"
+                    name="phone"
+                  />
+                  <ErrorMessage
+                    name="phone"
+                    component="div"
+                    className="text-danger mt-1"
+                  />
+                </Form.Group>
 
-            <div className="d-flex justify-content-center">
-              <Button type="submit" className="register-btn px-5 py-2">
-                Register
-              </Button>
-            </div>
+                <div className="d-flex justify-content-center">
+                  <Button
+                    type="submit"
+                    className="register-btn px-5 py-2"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Registering..." : "Register"}
+                  </Button>
+                </div>
 
-            <div className="text-center mt-3">
-              <Link to="/" className="register-link">
-                Already have an account? Login
-              </Link>
-            </div>
-          </Form>
+                <div className="text-center mt-3">
+                  <Link to="/" className="register-link">
+                    Already have an account? Login
+                  </Link>
+                </div>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
     </div>

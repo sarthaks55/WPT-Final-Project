@@ -17,6 +17,10 @@ const YogaSlider = () => {
             objectFit: "cover",
           }}
         />
+        <Carousel.Caption>
+          <h2 className="slider-title">Find Your Inner Peace</h2>
+          <p className="slider-text">Experience the harmony of mind and body through yoga meditation.</p>
+        </Carousel.Caption>
 
       </Carousel.Item>
 
@@ -30,6 +34,10 @@ const YogaSlider = () => {
             objectFit: "cover",
           }}
         />
+        <Carousel.Caption>
+          <h2 className="slider-title">Strength and Balance</h2>
+          <p className="slider-text">Enhance your flexibility and posture with daily yoga practice.</p>
+        </Carousel.Caption>
       </Carousel.Item>
 
       <Carousel.Item>
@@ -42,6 +50,10 @@ const YogaSlider = () => {
             objectFit: "cover",
           }}
         />
+        <Carousel.Caption>
+          <h2 className="slider-title">A Lifestyle of Wellness</h2>
+          <p className="slider-text">Live mindfully and embrace a healthier lifestyle through yoga.</p>
+        </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
   );
