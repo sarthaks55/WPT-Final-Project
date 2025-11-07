@@ -1,4 +1,5 @@
 import logo from "../../assets/Images/lotus_logo_svg.svg";
+import {Row,Col} from "react-bootstrap"
 import {
   FaTwitter,
   FaYoutube,
@@ -15,25 +16,27 @@ import {
   FaRegCopyright,
   FaWhatsapp,
 } from "react-icons/fa";
+import "../../assets/css/footer.css";
 
 const Footer = () => {
   return (
     <footer
-      className="text-light pt-5 pb-4"
+      className="text-light pt-5 pb-4 "
       style={{ backgroundColor: "#0d0d0d", position: "relative" }}
     >
-      <div className="container">
-        <div className="row gy-4">
-          <div className="col-lg-4 col-md-6">
+
+      <Row className="mx-2 my-2 justify-content-evenly">
+        <Col className="col-lg-4 col-md-6">
+          
             <img
               src={logo}
-              alt="The Yoga Institute"
+              alt="The Yoga Center"
               className="mb-3"
               style={{ width: "220px" }}
             />
             <p className="text-secondary mb-4" style={{ lineHeight: "1.7" }}>
-              The Yoga Institute, Santacruz (East), Mumbai, India was founded in
-              1918 by Shri Yogendraji, and is the oldest centre of yoga in the
+              The Yoga Center, Santacruz (East), Mumbai, India was founded in
+              2025 by Shri Sarthakji, and is the oldest centre of yoga in the
               world.
             </p>
             <div className="d-flex gap-3">
@@ -53,60 +56,26 @@ const Footer = () => {
                 <FaInstagram />
               </a>
             </div>
-          </div>
+          
+        </Col>
 
-          <div className="col-lg-4 col-md-6 d-flex flex-column justify-content-center">
-            <div className="d-flex align-items-center gap-3 mb-3">
-              <FaCalendarAlt color="#E74C3C" size={30} />
-              <div>
-                <h5 className="mb-0 text-light fw-bold">105+</h5>
-                <small className="text-secondary">Number of Years</small>
-              </div>
-            </div>
-            <div className="d-flex align-items-center gap-3 mb-3">
-              <FaHeart color="#E74C3C" size={30} />
-              <div>
-                <h5 className="mb-0 text-light fw-bold">10cr+</h5>
-                <small className="text-secondary">Lives Touched</small>
-              </div>
-            </div>
-            <div className="d-flex align-items-center gap-3 mb-3">
-              <FaChalkboardTeacher color="#E74C3C" size={30} />
-              <div>
-                <h5 className="mb-0 text-light fw-bold">1L+</h5>
-                <small className="text-secondary">Teachers Certified</small>
-              </div>
-            </div>
-            <div className="d-flex align-items-center gap-3">
-              <FaBookOpen color="#E74C3C" size={30} />
-              <div>
-                <h5 className="mb-0 text-light fw-bold">500+</h5>
-                <small className="text-secondary">Publications</small>
-              </div>
-            </div>
-          </div>
+        <Col className="col-lg-2 col-md-4 mt-3">
+        
+              <ul className="list-unstyled">
+                <li className="fw-bold mb-4 text-danger">Quick Links</li>
+                <li className="fw-bold mb-2"><a href="/" className="text-light fs-6">Home</a></li>
+                <li className="fw-bold mb-2"> <a href="/courses" className="text-light fs-6">Courses</a></li>
+                <li className="fw-bold mb-2"> <a href="/aboutus" className="text-light fs-6">About Us</a></li>
+                <li className="fw-bold mb-2"> <a href="/contactus" className="text-light fs-6">Contact Us</a></li>
+              </ul>
+            
 
-          <div className="col-lg-4 col-md-6">
-            <div className="row">
-              <div className="col-6">
-                <ul className="list-unstyled">
-                  <li className="fw-bold mb-2">Corporate wellness</li>
-                  <li className="fw-bold mb-2">Affiliations</li>
-                  <li className="fw-bold mb-2">Careers</li>
-                  <li className="fw-bold mb-2">CSR</li>
-                  <li className="fw-bold mb-2">Blog Journal</li>
-                </ul>
-              </div>
-              <div className="col-6">
-                <ul className="list-unstyled">
-                  <li className="fw-bold mb-2">News & Media</li>
-                  <li className="fw-bold mb-2">Terms & Conditions</li>
-                  <li className="fw-bold mb-2">Privacy Policy</li>
-                  <li className="fw-bold mb-2">Locate us</li>
-                </ul>
-              </div>
-            </div>
+        </Col>
 
+
+
+        <Col className="col-lg-4 col-md-6">
+          
             <div className="mt-3">
               <div className="d-flex align-items-start gap-2 mb-2">
                 <FaMapMarkerAlt className="mt-1" />
@@ -133,19 +102,24 @@ const Footer = () => {
                 </a>
               </div>
             </div>
+          
+
+          
+
+          
+        </Col>
+        <Row className="justify-content-center">
+          <hr className="border-secondary my-4" />
+          <div className="d-flex justify-content-center align-items-center flex-wrap">
+            <p className="mb-0 small text-secondary">
+              <FaRegCopyright /> 2025{" "}
+              <span className="text-danger">The Yoga Center.</span> All rights
+              reserved.
+            </p>
           </div>
-        </div>
-
-        <hr className="border-secondary my-4" />
-
-        <div className="d-flex justify-content-between align-items-center flex-wrap">
-          <p className="mb-0 small text-secondary">
-            <FaRegCopyright /> 2025{" "}
-            <span className="text-danger">The Yoga Center.</span> All rights
-            reserved.
-          </p>
-        </div>
-      </div>
+        </Row>
+        
+      </Row>
     </footer>
   );
 };
