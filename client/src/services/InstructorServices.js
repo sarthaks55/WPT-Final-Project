@@ -1,7 +1,5 @@
-
-
 import axios from 'axios';
-import { INSTRUCTOR_API_URL } from '../constants/APIConstant';
+import { API_BASE_URL, INSTRUCTOR_API_URL } from '../constants/APIConstant';
 
 
 export function getAllInstructor(){
@@ -32,3 +30,7 @@ export function updateInstructor(id, data) {
 }
 
 
+export const getAllInstructorsCount = async () => {
+     const res = await axios.get(`${API_BASE_URL}/totalinstructorscount`);
+     return res.data[0].InstructorsCount;
+}

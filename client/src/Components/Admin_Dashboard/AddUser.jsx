@@ -15,12 +15,10 @@ function AddUser() {
 
   const navigate = useNavigate();
   
-  // Handle input change
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  // Submit form
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
