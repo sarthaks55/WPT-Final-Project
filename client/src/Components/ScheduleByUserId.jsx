@@ -34,7 +34,7 @@ export function ScheduleByUserId() {
         <Container className="mt-3">
             <Row>
                 <Col lg={8}>
-                    <Alert variant="primary">Your Course List</Alert>
+                    <h3>Your Courses Schedule</h3>
                 </Col>
             </Row>
             {

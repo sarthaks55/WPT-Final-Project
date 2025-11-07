@@ -56,7 +56,7 @@ export function AddCourses() {
 
             <Row>
                 <Col lg={8}>
-                    <Alert variant="primary">Add a course</Alert>
+                    <h3>Add a course</h3>
                 </Col>
             </Row>
             <Row className="mt-3">
@@ -71,8 +71,6 @@ export function AddCourses() {
                             <Form.Label>Description</Form.Label>
                             <Form.Control as="textarea" rows={3} placeholder="Enter Course Description" name="description" onChange={handleChange} />
                         </Form.Group>
-
-
 
                         <Form.Group className="mb-3">
                             <Form.Label>Difficulty</Form.Label>

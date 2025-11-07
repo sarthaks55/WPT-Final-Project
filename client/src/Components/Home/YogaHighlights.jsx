@@ -14,7 +14,7 @@ const YogaHighlights = () => {
       id: 2,
       title: "Alibaug Retreat",
       img: offer2,
-      info: "The Yoga Institute's Alibaug retreat offers serene getaways where nature heals and yoga rests.",
+      info: "The Yoga Center's Alibaug retreat offers serene getaways where nature heals and yoga rests.",
       link: "#",
     },
   ];

@@ -6,14 +6,14 @@ import "../../assets/css/slider.css";
 
 const YogaSlider = () => {
   return (
-    <Carousel fade interval={3000} className="yoga-slider">
+    <Carousel fade interval={3000} className="yoga-slider ">
       <Carousel.Item>
         <img
           className="d-block w-100"
           src={img1}
           alt="Yoga meditation"
           style={{
-            height: "85vh",
+            height: "70vh",
             objectFit: "cover",
           }}
         />
@@ -30,7 +30,7 @@ const YogaSlider = () => {
           src={img2}
           alt="Yoga practice"
           style={{
-            height: "85vh",
+            height: "70vh",
             objectFit: "cover",
           }}
         />
@@ -46,7 +46,7 @@ const YogaSlider = () => {
           src={img3}
           alt="Yoga lifestyle"
           style={{
-            height: "85vh",
+            height: "70vh",
             objectFit: "cover",
           }}
         />

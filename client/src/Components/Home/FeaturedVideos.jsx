@@ -71,7 +71,7 @@ const FeaturedVideos = () => {
               textAlign: "justify",
             }}
           >
-            Explore Dr. Hansaji Yogendra's timeless wisdom on yoga, health,
+            Explore timeless wisdom on yoga, health,
             wellness, and mindfulness. Watch these videos to learn simple
             yet powerful techniques for a healthier body and mind.
           </p>
@@ -134,7 +134,7 @@ const FeaturedVideos = () => {
 
         <div className="text-center mt-5">
           <a
-            href="https://www.youtube.com/@theyogainstituteofficial"
+            href="https://www.youtube.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="fw-semibold text-dark text-decoration-none"
@@ -144,7 +144,7 @@ const FeaturedVideos = () => {
               fontSize: "1.05rem",
             }}
           >
-            Explore More <span className="ms-1">↗</span>
+            Explore More <span className="ms-1"><strong>{'>'}</strong></span>
           </a>
         </div>
       </div>

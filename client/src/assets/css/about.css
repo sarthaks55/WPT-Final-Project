@@ -1,0 +1,45 @@
+.aboutus-bg {
+  background: linear-gradient(
+    rgba(181, 255, 236, 0.777),
+      rgba(202, 70, 37,0.777)
+      
+    );
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  min-height: 100vh;
+  
+}
+
+.about-lotus {
+  width: 70px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.founder-img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border: 4px solid #ca4625;
+  
+}
+
+.info{
+  font-size: 18px;
+}
+
+.philosophy-card {
+  background: #fff8f6;
+  border-radius: 20px;
+}
+
+button.btn-danger {
+  background-color: #ca4625 !important;
+  border: none !important;
+}
+
+button.btn-danger:hover {
+  background-color: #b73d20 !important;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
