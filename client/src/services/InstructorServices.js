@@ -14,7 +14,7 @@ export function getInstructorById(id){
     return axios.get(`${INSTRUCTOR_API_URL}/${id}`);
 }
 
-export function updateInstructorById(id,Detail){
+export function updateInstructorById(Detail){
     
-    return axios.post(`${INSTRUCTOR_API_URL}/${id}`,Detail);
+    return axios.put(`${INSTRUCTOR_API_URL}`,Detail);
 }

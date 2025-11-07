@@ -33,7 +33,7 @@ export async function updateInstructorById (req, res){
     try {
     const conn = getConnectionObject();
     
-    const { bio, specialty, experience_years, certifications, rating, available_days, session_duration, languages   } = req.body;
+    const { user_id,bio, specialty, experience_years, certifications, rating, available_days, session_duration   } = req.body;
     const qry = `UPDATE instructors SET 
         bio='${bio}', 
         specialty='${specialty}', 
@@ -41,14 +41,13 @@ export async function updateInstructorById (req, res){
     certifications = '${certifications}',
     rating = ${rating},
     available_days = '${available_days}',
-    session_duration = ${session_duration},
-    languages = '${languages}'
+    session_duration = ${session_duration}
 
-      WHERE user_id=${req.params.id}
+      WHERE user_id=${user_id}
     `;
     const [result] = await conn.query(qry);
-
-    if (result.affectedRows === 1) {
+    console.log(result);
+    if (result.affectedRows >= 1) {
       res.status(200).send({ message: "Instructor updated successfully" });
     } else {
       res.status(404).send({ message: "Instructor not found" });

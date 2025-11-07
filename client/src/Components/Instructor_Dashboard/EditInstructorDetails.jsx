@@ -5,20 +5,22 @@ import { Bounce, toast } from "react-toastify";
 import { getInstructorById, updateInstructorById } from "../../services/InstructorServices";
 
 export default function EditInstructorDetails() {
+const ID = localStorage.getItem("user_id");
+  if (!ID) return null;
   const [Detail, setDetail] = useState({
+    user_id:ID,
     bio: "",
     specialty: "",
     experience_years: "",
     certifications: "",
     rating: "",
     available_days: "",
-    session_duration: "",
-    languages: "",
+    session_duration: ""
+    
   });
 
   const navigate = useNavigate();
-  const ID = localStorage.getItem("user_id");
-  if (!ID) return null;
+  
 
   const fetchDetails = async () => {
     try {
@@ -63,10 +65,14 @@ export default function EditInstructorDetails() {
     }
 
     try {
-      const response = await updateInstructorById(ID, Detail);
+      const response = await updateInstructorById(Detail);
+      console.log(response.data);
       if (response.status === 200) {
         toast.success("Details Updated Successfully!", { transition: Bounce });
         navigate(`../instructorDetails/${ID}`);
+      }
+      else if (response.status === 404){
+        toast.warning("Instructor not found",{ transition: Bounce });
       }
     } catch (error) {
       console.log(error);

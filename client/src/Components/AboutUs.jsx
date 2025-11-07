@@ -2,12 +2,12 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../AboutUs.css";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { color, motion } from "framer-motion";
+
 import { FaLeaf, FaHeart, FaSpa } from "react-icons/fa";
 import lotusLogo from "../assets/images/lotus_logo_svg.svg"; 
 import founderImg from "../assets/images/founder.png"; 
 import YashImg from "../assets/images/Yash.png";
- import KomalImg from "../assets/images/Komal.png";
+import KomalImg from "../assets/images/Komal.jpg";
 import '../assets/css/about.css';
 
 export function AboutUs() {
