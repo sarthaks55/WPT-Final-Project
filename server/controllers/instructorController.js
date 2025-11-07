@@ -150,3 +150,12 @@ export async function getAllStudentsByCourseId(request, response) {
 
 
 
+export async function getAllInstructorsCount (req, res){
+    try {
+        const conn=getConnectionObject();
+        const [rows] = await conn.query("SELECT COUNT(id) AS InstructorsCount FROM instructors;");
+        res.status(200).send(rows);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching users", error });
+    }
+};

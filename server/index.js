@@ -3,10 +3,10 @@ import { connectDB } from './configs/dbConfig.js';
 import { getContactUs, getCourseById, getCourses, postContactUs } from './controllers/publicviewController.js';
 import { loginUser, registerUser } from './controllers/authController.js';
 import cors from 'cors';
-import { getAllUsers, getUserById, addUser, updateUserById, deleteUserById, getUserCoursesById, getUserSchedules} from "./controllers/userController.js";
-import { addCourse, deleteCourseById, getCourseScheduledById, updateCourse } from './controllers/courseController.js';
+import { getAllUsers, getUserById, addUser, updateUserById, deleteUserById, getUserCoursesById, getUserSchedules, getAllUsersCount} from "./controllers/userController.js";
+import { addCourse, deleteCourseById, getAllCourse, getAllCoursesCount, getCourseScheduledById, updateCourse } from './controllers/courseController.js';
 import { verifyToken } from './middlewares/VerifyToken.js';
-import { getAllCourseOfInstructorById, getAllInstructor, getAllStudentsByCourseId, getCourseScheduleById, getInstructorById, updateInstructorById } from './controllers/instructorController.js';
+import { getAllCourseOfInstructorById, getAllInstructor, getAllInstructorsCount, getAllStudentsByCourseId, getCourseScheduleById, getInstructorById, updateInstructorById } from './controllers/instructorController.js';
 import { enroll } from './controllers/enrollmentController.js';
 
 const app = express();
@@ -61,7 +61,9 @@ app.get("/instructor",getAllInstructor);
 
 
 app.post("/enroll",enroll);
-
+app.get("/totaluserscount",getAllUsersCount)
+app.get("/totalinstructorscount",getAllInstructorsCount)
+app.get("/totalcoursescount",getAllCoursesCount)
 
 
 

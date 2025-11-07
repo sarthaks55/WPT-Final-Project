@@ -35,4 +35,7 @@ export function enrollInCourse(formData){
     return axios.post(`${API_BASE_URL}/enroll`,formData);
 }
 
-
+export const getAllCoursesCount = async () => {
+    const res = await axios.get(`${API_BASE_URL}/totalcoursescount`);
+    return res.data[0].CoursesCount;
+}

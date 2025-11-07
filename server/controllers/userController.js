@@ -158,3 +158,14 @@ export async function getUserSchedules(req, res) {
     });
   }
 }
+
+
+export async function getAllUsersCount (req, res){
+    try {
+        const conn=getConnectionObject();
+        const [rows] = await conn.query("SELECT COUNT(id) AS UsersCount FROM users;");
+        res.status(200).send(rows);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching users", error });
+    }
+};
