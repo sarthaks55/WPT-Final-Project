@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { USER_API_URL } from '../constants/APIConstant';
+import { API_BASE_URL, USER_API_URL } from '../constants/APIConstant';
+
 
 export async function saveUser(formData){
     return axios.post(USER_API_URL, formData);
@@ -25,3 +26,7 @@ export function getScheduleByUserId(id){
     return axios.get(`${USER_API_URL}/schedules/${id}`);
 }
 
+export const getAllUsersCount = async () => {
+    const res = await axios.get(`${API_BASE_URL}/totaluserscount`);
+    return res.data[0].UsersCount;
+}
