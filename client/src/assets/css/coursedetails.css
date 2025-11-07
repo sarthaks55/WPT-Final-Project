@@ -12,8 +12,9 @@
 
 .course-details-card h2 {
   font-size: 1.8rem;
+  color: #ca4625 !important;
 }
 
 .course-details-card strong {
-  color: #0d6efd;
+  color: #ca4625;
 }

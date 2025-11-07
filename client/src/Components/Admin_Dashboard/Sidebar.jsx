@@ -71,8 +71,6 @@ export default function Sidebar({ onClickItem }) {
         Logout
       </Nav.Link>
 
-
-
     </Nav>
   );
 }

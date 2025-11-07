@@ -103,23 +103,21 @@ export function Navigationbar() {
                             <Nav.Link className="nav-link-custom">About Us</Nav.Link>
                         </LinkContainer>
                         
-                        <LinkContainer to="/login">
-                            <Nav.Link className="nav-link-custom d-lg-none">login</Nav.Link>
-                        </LinkContainer>
+                        
                         
                     </Nav>
                 </Navbar.Collapse>
                 <FontAwesomeIcon icon={faUser} className="me-1" style={{ color: 'white' }} />
                 {role_id === "3" ? (
 
-                <DropdownButton className="no-style-dropdown d-none d-lg-block" title={username}>
+                <DropdownButton className="no-style-dropdown" title={username}>
                     <Dropdown.Item href="/userdashboard">User Dashboard</Dropdown.Item>
                     <Dropdown.Item onClick={handleLogout}>logout</Dropdown.Item>
                 </DropdownButton>
                 
                 ) : role_id === "2" ? (
 
-                <DropdownButton className="no-style-dropdown d-none d-lg-block" title={username}>
+                <DropdownButton className="no-style-dropdown" title={username}>
                     <Dropdown.Item href="/instructorDashboard">Instructor Dashboard</Dropdown.Item>
                     <Dropdown.Item onClick={handleLogout}>logout</Dropdown.Item>
                 </DropdownButton>
@@ -127,14 +125,14 @@ export function Navigationbar() {
                 ) : role_id === "1" ? (
 
                 
-                <DropdownButton className="no-style-dropdown d-none d-lg-block" title={username}>
+                <DropdownButton className="no-style-dropdown" title={username}>
                     <Dropdown.Item href="/adminDashboard">Admin Dashboard</Dropdown.Item>
                     <Dropdown.Item onClick={handleLogout}>logout</Dropdown.Item>
                 </DropdownButton>
                 
                 ) : (
 
-                <Button className="Username-Button d-none d-lg-block"onClick={handleClick}>Login</Button>
+                <Button className="Username-Button"onClick={handleClick}>Login</Button>
                 
                 )}
 

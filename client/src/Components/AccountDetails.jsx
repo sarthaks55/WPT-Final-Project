@@ -31,10 +31,7 @@ export default function AccountDetails() {
     useEffect(() => {
         fetchDetails();
     }, []);
-    const handleClick =  ()=>{
-         navigate(`editDetails/${ID}`);
-    }
-
+    
 
     return (
         <div>
@@ -59,7 +56,7 @@ export default function AccountDetails() {
                             <Form.Control placeholder="Phone" disabled value={Account.password_hash}  type="password"/>
                         </Form.Group>
                         <div className="d-flex gap-2">
-                            <Button variant="danger" onClick={handleClick}
+                            <Button variant="danger" href={`account/editDetails/${ID}`}
                             >Edit</Button>
                         </div>
                     </Col>

@@ -1,82 +1,69 @@
-
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUserById, updateUser } from "../services/UserService";
-import { Bounce, toast } from "react-toastify"; 
+import { Bounce, toast } from "react-toastify";
 
 export default function EditAccountDetails() {
-  
-  const [account, setAccount] = useState({ full_name: '', email: '', phone: '', password_hash: '' });
+  const [account, setAccount] = useState({
+    full_name: "",
+    email: "",
+    phone: "",
+    password_hash: "",
+  });
 
   const navigate = useNavigate();
-
   const ID = localStorage.getItem("user_id");
-  if (!ID) return;
-  
-  const fetchDetails = async () => {
-    try {
-      const response = await getUserById(ID);
-      console.log(response.data);
-      setAccount(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  if (!ID) return null;
 
-  const handleChange = (event) => {
-    setAccount({ ...account, [event.target.name]: event.target.value });
-  }
-
-  const handleSubmit = async (event) => {
-    try {
-      event.preventDefault();
-      console.log(account);
-      const response = await updateUser(ID, account);
-      console.log(response);
-      if (response.status === 200) {
-        // show success message
-        toast.success("Profile Edited Succesfullly", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          transition: Bounce,
-        });
-        
-      }
-      navigate("../account");
-
-    } catch (error) {
-      console.log(error);
-      if (error.response.status === 500) {
-        // show failure message
-        toast.error("Something went wrong", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          transition: Bounce,
-        });
-      }
-    }
-
-  }
-
- 
   useEffect(() => {
+    const fetchDetails = async () => {
+      try {
+        const response = await getUserById(ID);
+        setAccount(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     fetchDetails();
   }, []);
 
+  const handleChange = (e) => {
+    setAccount({ ...account, [e.target.name]: e.target.value });
+  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+   
+    const nameRegex = /^[A-Za-z ]+$/;
+    const phoneRegex = /^[0-9]{10}$/;
+    const passRegex = /^.{6,}$/;
+
+    if (!account.full_name || !nameRegex.test(account.full_name)) {
+      toast.error("Enter a valid full name (letters only).", { transition: Bounce });
+      return;
+    }
+    if (!account.phone || !phoneRegex.test(account.phone)) {
+      toast.error("Enter a valid 10-digit phone number.", { transition: Bounce });
+      return;
+    }
+    if (!account.password_hash || !passRegex.test(account.password_hash)) {
+      toast.error("Password must be at least 6 characters.", { transition: Bounce });
+      return;
+    }
+
+    try {
+      const response = await updateUser(ID, account);
+      if (response.status === 200) {
+        toast.success("Profile updated successfully!", { transition: Bounce });
+        navigate("../account");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong.", { transition: Bounce });
+    }
+  };
 
   return (
     <div>
@@ -86,30 +73,55 @@ export default function EditAccountDetails() {
           <Col sm={12} md={8}>
             <Form.Group className="mb-3">
               <Form.Label>Full Name</Form.Label>
-              <Form.Control placeholder="Full Name" onChange={handleChange} name="full_name" value={account.full_name} />
+              <Form.Control
+                placeholder="Full Name"
+                name="full_name"
+                value={account.full_name}
+                onChange={handleChange}
+                required
+              />
             </Form.Group>
+
             <Form.Group className="mb-3">
               <Form.Label>Email Address</Form.Label>
-              <Form.Control type="email" placeholder="E-mail" onChange={handleChange} disabled name="email" value={account.email} />
+              <Form.Control
+                type="email"
+                placeholder="E-mail"
+                name="email"
+                value={account.email}
+                disabled
+              />
             </Form.Group>
+
             <Form.Group className="mb-3">
               <Form.Label>Phone Number</Form.Label>
-              <Form.Control placeholder="Phone" onChange={handleChange} name="phone" value={account.phone} />
+              <Form.Control
+                placeholder="Phone"
+                name="phone"
+                value={account.phone}
+                onChange={handleChange}
+                required
+              />
             </Form.Group>
+
             <Form.Group className="mb-3">
               <Form.Label>Password</Form.Label>
-              <Form.Control placeholder="Password" onChange={handleChange} name="password_hash" value={account.password_hash} type="password" />
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                name="password_hash"
+                value={account.password_hash}
+                onChange={handleChange}
+                required
+              />
             </Form.Group>
-            <div className="d-flex gap-2">
-              <Button variant="danger" type="submit" 
-              >Save Changes</Button>
-            </div>
+
+            <Button variant="danger" type="submit">
+              Save Changes
+            </Button>
           </Col>
         </Row>
       </Form>
-
-
-
     </div>
   );
 }

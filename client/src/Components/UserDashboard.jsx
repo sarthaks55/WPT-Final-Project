@@ -15,7 +15,7 @@ export default function UDashboard() {
   }, [location]);
 
   return (
-    <Container fluid className="p-3">
+    <Container fluid className="py-3">
       <Row>
         <Col
           md={3}
