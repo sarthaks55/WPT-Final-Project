@@ -38,7 +38,7 @@ export function UserCoursesList() {
         <Container className="mt-3">
             <Row>
                 <Col lg={8}>
-                    <Alert variant="primary">Your Course List</Alert>
+                    <h3>Your Course List</h3>
                 </Col>
             </Row>
             {

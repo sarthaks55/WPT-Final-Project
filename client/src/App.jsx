@@ -7,7 +7,7 @@ import { UpdateCourseForm } from "./Components/UpdateCoursebyID";
 import { Login } from "./Components/Login";
 import { PrivateRoute } from "./Components/PrivateRoute";
 import ContactPage from "./Components/ContactUs";
-import { AboutUs } from "./AboutUs";
+import { AboutUs } from "./Components/AboutUs";
 import UDashboard from "./Components/UserDashboard";
 import { AddUser } from "./Components/AddUser";
 import { ListUser } from "./Components/ListUser";

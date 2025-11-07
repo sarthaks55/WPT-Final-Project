@@ -21,7 +21,7 @@ export default function Sidebar({ onClickItem }) {
         onClick={onClickItem}
         className="sidebar-link text-decoration-none d-flex align-items-center gap-2"
       >
-        My Classes / Bookings
+        My Courses
       </Nav.Link>
 
       <Nav.Link

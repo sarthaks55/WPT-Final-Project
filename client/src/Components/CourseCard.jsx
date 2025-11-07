@@ -29,7 +29,7 @@ export function CourseList() {
             <Card className="course-card shadow-sm border-1">
               <Card.Body>
                 <div className="d-flex align-items-center mb-2">
-                  <FaBookOpen size={24} className="me-2 text-primary" />
+                  <FaBookOpen size={24} className="me-2 text-primary icon" />
                   <Card.Title className="mb-0 fw-bold">
                     {course.name}
                   </Card.Title>

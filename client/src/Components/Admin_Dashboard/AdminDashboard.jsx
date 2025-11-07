@@ -8,12 +8,12 @@ const AdminDashboard = () => {
     <div className="container-fluid">
       <div className="row">
         {/* Sidebar */}
-        <div className="col-md-3 col-lg-2 p-0 bg-dark text-white min-vh-100">
+        <div className="col-md-3 col-lg-2 min-vh-100">
           <Sidebar />
         </div>  
 
         {/* Main Area */}
-        <div className="col-md-9 col-lg-10 p-0 bg-light min-vh-100">
+        <div className="col-md-9 col-lg-10  min-vh-100">
 
             <Outlet/>
 
