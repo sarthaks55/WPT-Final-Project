@@ -26,6 +26,7 @@ import EditUser from "./Components/Admin_Dashboard/EditUser";
 import AddCourse from "./Components/Admin_Dashboard/AddCourse";
 import EditCourse from "./Components/Admin_Dashboard/EditCourse";
 import InstructorList from "./Components/Admin_Dashboard/InstructorList";
+
 import Feedbacks from "./Components/Admin_Dashboard/Feedbacks";
 
 import CoursesLists from "./Components/Admin_Dashboard/CoursesLists";
@@ -35,6 +36,8 @@ import InstructorDetails from "./Components/Instructor_Dashboard/InstructorDetai
 import EditInstructorDetails from "./Components/Instructor_Dashboard/EditInstructorDetails";
 import Home from "./pages/Home";
 import { ScheduleByUserId } from "./Components/ScheduleByUserId";
+import AddInstructor from "./Components/Admin_Dashboard/AddInstructor";
+import EditInstructor from "./Components/Admin_Dashboard/EditInstructor";
 
 
 function App() {
@@ -96,6 +99,8 @@ function App() {
 
             {/* Other Routes */}
             <Route path="instructors" element={<InstructorList />} />
+            <Route path="instructors/add" element={<AddInstructor/>} />
+            <Route path="instructors/edit/:id" element={<EditInstructor/>}/>
             <Route path="feedbacks" element={<Feedbacks />} />
             
           </Route>

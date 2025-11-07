@@ -16,7 +16,7 @@ export async function getAllInstructor (req, res){
 export async function getInstructorById(req, res) {
     try {
         const conn=getConnectionObject();
-        const [rows] = await conn.query("SELECT * FROM instructors WHERE user_id = ?", [req.params.id]);
+        const [rows] = await conn.query("SELECT * FROM instructors WHERE id = ?", [req.params.id]);
         if (rows.length === 0) {
             res.status(404).send({ message: "Instructor not found" });
         } else {
@@ -63,7 +63,7 @@ export async function updateInstructorById (req, res){
 export async function deleteInstructorById(req, res){
     try {
         const conn=getConnectionObject();
-        const [result] = await conn.query("DELETE FROM instructors WHERE user_id = ?", [req.params.id]);
+        const [result] = await conn.query("DELETE FROM instructors WHERE id = ?", [req.params.id]);
         if (result.affectedRows === 0) {
             res.status(404).send({ message: "Instructor not found" });
         } else {
@@ -149,6 +149,59 @@ export async function getAllStudentsByCourseId(request, response) {
 }
 
 
+export async function addInstructor(req, res) {
+  try {
+    const connection = getConnectionObject();
+    const { user_id, bio, specialty, experience_years, certifications, available_days } = req.body;
+
+    const qry = `
+      INSERT INTO instructors (user_id, bio, specialty, experience_years, certifications, available_days)
+      VALUES (${user_id}, '${bio}', '${specialty}', ${experience_years}, '${certifications}', '${available_days}')
+    `;
+
+    const [resultSet] = await connection.query(qry);
+
+    if (resultSet.affectedRows === 1) {
+      res.status(201).send({ message: "Instructor Added Successfully" });
+    } else {
+      res.status(500).send({ message: "Unable to Add Instructor" });
+    }
+  } catch (error) {
+    console.error("Error adding instructor:", error);
+    res.status(500).send({ message: "Something went wrong" });
+  }
+}
+
+export async function updateInstructor(req, res) {
+  try {
+    const conn = getConnectionObject();
+    const { bio, specialty, experience_years, certifications, rating, available_days, session_duration, languages } = req.body;
+
+    const qry = `
+      UPDATE instructors SET 
+        bio='${bio}', 
+        specialty='${specialty}', 
+        experience_years=${experience_years},
+        certifications='${certifications}',
+        rating=${rating || 0},
+        available_days='${available_days}',
+        session_duration=${session_duration || 0},
+        languages='${languages || ""}'
+      WHERE id=${req.params.id}
+    `;
+
+    const [result] = await conn.query(qry);
+
+    if (result.affectedRows === 1) {
+      res.status(200).send({ message: "Instructor updated successfully" });
+    } else {
+      res.status(404).send({ message: "Instructor not found" });
+    }
+  } catch (error) {
+    console.error("Error updating instructor:", error);
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+}
 
 export async function getAllInstructorsCount (req, res){
     try {

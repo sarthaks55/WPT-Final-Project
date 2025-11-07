@@ -6,7 +6,7 @@ import cors from 'cors';
 import { getAllUsers, getUserById, addUser, updateUserById, deleteUserById, getUserCoursesById, getUserSchedules, getAllUsersCount} from "./controllers/userController.js";
 import { addCourse, deleteCourseById, getAllCourse, getAllCoursesCount, getCourseScheduledById, updateCourse } from './controllers/courseController.js';
 import { verifyToken } from './middlewares/VerifyToken.js';
-import { getAllCourseOfInstructorById, getAllInstructor, getAllInstructorsCount, getAllStudentsByCourseId, getCourseScheduleById, getInstructorById, updateInstructorById } from './controllers/instructorController.js';
+import { addInstructor, deleteInstructorById, getAllCourseOfInstructorById, getAllInstructor, getAllInstructorsCount, getAllStudentsByCourseId, getCourseScheduleById, getInstructorById, updateInstructor, updateInstructorById } from './controllers/instructorController.js';
 import { enroll } from './controllers/enrollmentController.js';
 
 const app = express();
@@ -56,8 +56,9 @@ app.get("/instructor/course/student/:id",getAllStudentsByCourseId);
 app.get("/instructor/:id",getInstructorById);
 app.post("/instructor/:id",updateInstructorById);
 app.get("/instructor",getAllInstructor);
-
-
+app.post("/instructor", addInstructor);
+app.put("/instructor/update/:id", updateInstructor);
+app.delete("/instructor/:id", deleteInstructorById);
 
 
 app.post("/enroll",enroll);
