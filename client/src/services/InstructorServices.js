@@ -17,6 +17,19 @@ export function updateInstructorById(Detail){
     return axios.put(`${INSTRUCTOR_API_URL}`,Detail);
 }
 
+export function deleteInstructor(id) {
+  return axios.delete(`${INSTRUCTOR_API_URL}/${id}`);
+}
+
+export function addInstructor(formData) {
+  return axios.post(`${INSTRUCTOR_API_URL}`, formData);
+}
+
+export function updateInstructor(id, data) {
+  return axios.put(`${INSTRUCTOR_API_URL}/update/${id}`, data);
+}
+
+
 export const getAllInstructorsCount = async () => {
      const res = await axios.get(`${API_BASE_URL}/totalinstructorscount`);
      return res.data[0].InstructorsCount;
