@@ -63,7 +63,7 @@ function App() {
           <Route path="/instructorDashboard" element={<InstructorDashboard />}>
             <Route index element={< AccountDetails />} />
             <Route path="account" element={< AccountDetails />} />
-            <Route path="editDetails/:id" element={< EditAccountDetails />} />
+            <Route path="account/editDetails/:id" element={< EditAccountDetails />} />
             <Route path="instructorDetails/:id" element={< InstructorDetails />} />
             <Route path="editInstructorDetails/:id" element={< EditInstructorDetails />} />
             <Route path="instructor/courses/:id" element={<InstructorCoursesList/>}/> 
