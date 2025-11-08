@@ -31,8 +31,9 @@ export function CourseDetails() {
   }
 
   const handleSubmit = async (event) => {
-    if (role_id !== 3) {
-        toast.warning("Please login as User ⚠️", {
+   
+    if (role_id != 3) {
+        toast.warning("Please login as User ", {
             position: "top-right",
             autoClose: 4000,
             hideProgressBar: false,

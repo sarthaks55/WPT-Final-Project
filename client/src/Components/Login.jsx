@@ -37,7 +37,7 @@ export function Login() {
                 storeRoleID(response.data.role_id);
                 storeUsername(response.data.name);
                 
-                console.log(response.data.username);
+                console.log(response.data.name);
                 storeUserID(response.data.user_id);
                 navigate("/");
             }
