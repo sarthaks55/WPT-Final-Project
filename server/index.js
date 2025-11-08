@@ -54,7 +54,7 @@ app.get("/instructor/courses/:id",getAllCourseOfInstructorById);
 app.get("/instructor/courses/schedule/:id",getCourseScheduleById);
 app.get("/instructor/course/student/:id",getAllStudentsByCourseId);
 app.get("/instructor/:id",getInstructorById);
-app.post("/instructor/:id",updateInstructorById);
+app.put("/instructor",updateInstructorById);
 app.get("/instructor",getAllInstructor);
 app.post("/instructor", addInstructor);
 app.put("/instructor/update/:id", updateInstructor);

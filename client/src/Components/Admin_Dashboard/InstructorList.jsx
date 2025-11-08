@@ -3,6 +3,7 @@ import { Table, Button, Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { FaEdit, FaTrashAlt, FaUserPlus } from "react-icons/fa";
 import { getAllInstructor, deleteInstructor } from "../../services/InstructorServices";
+import { Bounce, toast } from "react-toastify";
 
 const InstructorList = () => {
   const [details, setDetails] = useState([]);
@@ -33,8 +34,21 @@ const InstructorList = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this instructor?")) {
       try {
-        await deleteInstructor(id);
+        const response = await deleteInstructor(id);
         setDetails(details.filter((inst) => inst.id !== id));
+        if(response?.status === 200){
+        toast.error("Instructor Deleted", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        })
+      }
       } catch (error) {
         console.error("Error deleting instructor:", error);
       }

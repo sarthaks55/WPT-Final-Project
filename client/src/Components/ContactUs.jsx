@@ -21,8 +21,8 @@ function ContactPage() {
     event.preventDefault();
 
     
-    const nameRegex = /^[A-Za-z ]{2,50}$/; // letters & spaces, 2-50 chars
-    const phoneRegex = /^[0-9]{10}$/; // exactly 10 digits
+    const nameRegex = /^[A-Za-z ]{2,50}$/; 
+    const phoneRegex = /^[0-9]{10}$/; 
     const messageMinLength = 10;
 
     if (!formData.name || !nameRegex.test(formData.name)) {
